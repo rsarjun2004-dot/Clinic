@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The One Aesthetics — Tirunelveli</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ivory:#f9f5f0;--cream:#f2ebe0;--rose:#c9846a;
+  --burgundy:#7a3030;--deep:#1a0a0a;--charcoal:#2d1f1f;--muted:#8a7060;
+  --gold:#c8a96e;--gold-light:#e8d5a8;--gold-dark:#a8893e;
+  --wa:#25d366;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--deep);color:var(--ivory);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+a{color:inherit;text-decoration:none;}
+button{cursor:none;}
+
+/* ── CURSOR ── */
+.cur{position:fixed;pointer-events:none;z-index:99999;mix-blend-mode:difference;}
+.cur-dot{width:7px;height:7px;background:var(--ivory);border-radius:50%;transform:translate(-50%,-50%);}
+.cur-ring{width:38px;height:38px;border:1px solid rgba(249,245,240,0.45);border-radius:50%;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s,opacity .35s;}
+body:has(a:hover) .cur-ring,body:has(button:hover) .cur-ring{width:56px;height:56px;border-color:var(--gold);}
+
+/* ── TOAST ── */
+.toast{position:fixed;top:28px;right:28px;z-index:99998;background:#0d2b0d;border:1px solid rgba(37,211,102,0.35);backdrop-filter:blur(18px);padding:16px 22px 16px 18px;display:flex;align-items:flex-start;gap:14px;min-width:300px;max-width:380px;transform:translateX(120%);opacity:0;transition:.5s cubic-bezier(.22,.68,0,1.2);border-radius:3px;box-shadow:0 12px 40px rgba(0,0,0,0.5);}
+.toast.show{transform:translateX(0);opacity:1;}
+.toast-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
+.toast-body h4{font-size:13px;font-weight:600;color:#4ade80;margin-bottom:4px;}
+.toast-body p{font-size:11px;color:rgba(249,245,240,0.65);line-height:1.6;}
+.toast-close{margin-left:auto;background:none;border:none;color:rgba(249,245,240,0.35);font-size:16px;flex-shrink:0;padding:0 0 0 8px;line-height:1;cursor:none;}
+.toast-close:hover{color:var(--ivory);}
+
+/* ── EMERGENCY BAR ── */
+.e-bar{background:var(--burgundy);padding:9px 50px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:1.5px;font-weight:500;text-transform:uppercase;z-index:300;position:relative;}
+.e-bar a{color:var(--gold-light);border-bottom:1px solid rgba(200,169,110,0.4);padding-bottom:1px;transition:.2s;}
+.e-bar a:hover{color:#fff;}
+.e-bar-left{display:flex;align-items:center;gap:24px;color:rgba(249,245,240,0.7);}
+@media(max-width:680px){.e-bar{padding:8px 20px;font-size:9px;}.e-bar-left span:first-child{display:none;}}
+
+/* ── NAVBAR ── */
+nav{position:fixed;top:38px;left:0;right:0;z-index:200;padding:18px 50px;display:flex;align-items:center;justify-content:space-between;transition:.5s;}
+nav.scrolled{top:0;background:rgba(15,5,5,0.97);backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,110,0.12);padding:11px 50px;}
+
+/* ── LOGO ── */
+.logo{display:flex;align-items:center;}
+.logo-the{font-family:'Jost',sans-serif;font-weight:200;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-right:5px;align-self:flex-end;margin-bottom:5px;}
+.logo-one-wrap{position:relative;display:flex;align-items:center;}
+.logo-big{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;line-height:1;color:var(--ivory);}
+.logo-face-svg{position:absolute;left:1px;top:50%;transform:translateY(-50%);width:28px;height:36px;pointer-events:none;}
+.logo-aesthetics{font-family:'Jost',sans-serif;font-weight:200;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);align-self:flex-end;margin-bottom:6px;margin-left:5px;}
+
+/* ── NAV CENTER ── */
+.nav-center{display:flex;gap:26px;align-items:center;}
+.nav-center a{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:rgba(249,245,240,0.65);transition:.3s;position:relative;}
+.nav-center a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:.3s;}
+.nav-center a:hover{color:var(--ivory);}
+.nav-center a:hover::after{transform:scaleX(1);}
+
+/* ── NAV RIGHT ── */
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-btn{background:transparent;border:1px solid rgba(200,169,110,0.32);color:rgba(249,245,240,0.75);padding:8px 15px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;display:flex;align-items:center;gap:6px;transition:.3s;white-space:nowrap;}
+.nav-dropdown-btn:hover{border-color:var(--gold);color:var(--gold);}
+.nav-dropdown-btn .arr{font-size:7px;transition:.3s;}
+.nav-dropdown:hover .nav-dropdown-btn .arr{transform:rotate(180deg);}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);right:0;background:rgba(12,4,4,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,169,110,0.14);min-width:175px;display:none;flex-direction:column;z-index:600;}
+.nav-dropdown:hover .dropdown-menu{display:flex;}
+.dropdown-menu a{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(249,245,240,0.6);transition:.2s;border-bottom:1px solid rgba(200,169,110,0.06);}
+.dropdown-menu a:last-child{border-bottom:none;}
+.dropdown-menu a:hover{background:rgba(200,169,110,0.07);color:var(--gold);}
+.nav-book{background:var(--gold);color:var(--deep);border:none;padding:9px 18px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;transition:.3s;white-space:nowrap;}
+.nav-book:hover{background:var(--gold-light);}
+
+/* ── HERO ── */
+.hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 50px 80px;z-index:2;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right-bg{width:100%;height:100%;background:linear-gradient(135deg,#2d1015,#4a1e25 35%,#6b2d35 65%,#3d1520);display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--deep) 0%,transparent 40%);z-index:1;}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--deep));z-index:1;}
+.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .8s .3s ease forwards;}
+.hero-tag::before{content:'';width:26px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:70px;font-weight:300;line-height:1.05;margin-bottom:14px;font-style:italic;opacity:0;animation:fadeUp .9s .5s ease forwards;}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--gold);}
+.hero-sub{font-size:13px;color:rgba(249,245,240,0.55);line-height:1.9;max-width:355px;margin-bottom:42px;opacity:0;animation:fadeUp .9s .7s ease forwards;}
+.hero-btns{display:flex;gap:13px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .9s ease forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+.btn-primary{background:var(--gold);color:var(--deep);padding:13px 28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;border:none;transition:.3s;position:relative;overflow:hidden;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.12);transform:translateX(-101%);transition:.4s;}
+.btn-primary:hover::before{transform:translateX(0);}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-ghost{background:transparent;border:1px solid rgba(249,245,240,0.26);color:var(--ivory);padding:13px 28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;transition:.3s;}
+.btn-ghost:hover{border-color:var(--ivory);}
+
+.hero-scroll{position:absolute;bottom:36px;left:50px;display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,245,240,0.28);animation:scrollBob 2.5s ease-in-out infinite;}
+.hero-scroll::before{content:'';width:1px;height:42px;background:linear-gradient(to bottom,transparent,rgba(249,245,240,0.28));}
+@keyframes scrollBob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.hero-stat-strip{position:absolute;right:0;bottom:60px;z-index:3;display:flex;flex-direction:column;gap:1px;opacity:0;animation:fadeUp .9s 1.1s ease forwards;}
+.h-stat{background:rgba(15,5,5,0.82);backdrop-filter:blur(14px);border-left:2px solid var(--gold);padding:13px 18px;min-width:130px;}
+.h-stat .n{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--gold-light);}
+.h-stat .l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(249,245,240,0.38);}
+
+/* ── TICKER ── */
+.ticker-wrap{background:var(--burgundy);overflow:hidden;padding:11px 0;border-top:1px solid rgba(200,169,110,0.15);border-bottom:1px solid rgba(200,169,110,0.15);}
+.ticker-track{display:flex;animation:tick 42s linear infinite;white-space:nowrap;}
+.tick-item{padding:0 38px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(249,245,240,0.75);display:flex;align-items:center;gap:12px;}
+.tick-dot{width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SECTION COMMON ── */
+.section{padding:95px 50px;}
+.section-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:13px;display:flex;align-items:center;gap:13px;}
+.section-label::before{content:'';width:20px;height:1px;background:var(--gold);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.1;margin-bottom:13px;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-sub{font-size:13px;color:var(--muted);line-height:1.8;max-width:490px;}
+
+/* ── SERVICES ── */
+.services-section{background:var(--charcoal);position:relative;overflow:hidden;}
+.services-section::before{content:'';position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(200,169,110,0.04),transparent);pointer-events:none;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+
+.service-card{background:rgba(255,255,255,0.025);border:1px solid rgba(200,169,110,0.09);border-radius:2px;overflow:hidden;transition:.45s;cursor:none;}
+.service-card:hover{transform:translateY(-7px);border-color:rgba(200,169,110,0.32);box-shadow:0 22px 60px rgba(0,0,0,0.45);}
+.sc-img-wrap{overflow:hidden;position:relative;height:185px;}
+.sc-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(12,4,4,0.65));pointer-events:none;}
+.sc-img{width:100%;height:100%;object-fit:cover;filter:saturate(0.78) contrast(1.04);transition:.5s;display:block;}
+.service-card:hover .sc-img{filter:saturate(1.05) contrast(1.05);transform:scale(1.06);}
+.sc-body{padding:20px 18px 18px;}
+.sc-num{font-size:9px;letter-spacing:2px;color:rgba(200,169,110,0.36);margin-bottom:5px;}
+.sc-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ivory);margin-bottom:7px;}
+.sc-desc{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.sc-link{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:7px;transition:.3s;border:none;background:none;font-family:'Jost',sans-serif;padding:0;}
+.sc-link::after{content:'→';transition:.3s;}
+.service-card:hover .sc-link{gap:12px;}
+
+/* ── INFERTILITY ── */
+.infertility-section{background:var(--deep);padding:95px 50px;}
+.inf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:50px;}
+.inf-card{background:rgba(255,255,255,0.022);border:1px solid rgba(200,169,110,0.09);border-radius:2px;overflow:hidden;display:grid;grid-template-columns:200px 1fr;transition:.4s;}
+.inf-card:hover{border-color:rgba(200,169,110,0.32);transform:translateY(-5px);box-shadow:0 18px 55px rgba(0,0,0,0.45);}
+.inf-img-wrap{overflow:hidden;height:100%;min-height:220px;}
+.inf-img{width:200px;height:100%;min-height:220px;object-fit:cover;filter:saturate(0.75);transition:.4s;display:block;}
+.inf-card:hover .inf-img{filter:saturate(1.05);}
+.inf-body{padding:26px 22px;display:flex;flex-direction:column;justify-content:center;}
+.inf-gender{font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+.inf-gender.male{color:#7eb3f7;}
+.inf-gender.female{color:#f0a0b8;}
+.inf-gender.couple{color:var(--gold);}
+.inf-gender::before{content:'';width:14px;height:1px;}
+.inf-gender.male::before{background:#7eb3f7;}
+.inf-gender.female::before{background:#f0a0b8;}
+.inf-gender.couple::before{background:var(--gold);}
+.inf-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ivory);margin-bottom:9px;line-height:1.3;}
+.inf-desc{font-size:12px;color:var(--muted);line-height:1.85;margin-bottom:15px;}
+.inf-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:15px;}
+.inf-tag{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid;}
+.inf-tag.m{border-color:rgba(126,179,247,0.26);color:#7eb3f7;background:rgba(126,179,247,0.05);}
+.inf-tag.f{border-color:rgba(240,160,184,0.26);color:#f0a0b8;background:rgba(240,160,184,0.05);}
+.inf-tag.c{border-color:rgba(200,169,110,0.26);color:var(--gold);background:rgba(200,169,110,0.05);}
+
+/* ── DOCTOR ── */
+.doctor-section{background:var(--deep);display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+.doc-img-side{position:relative;background:linear-gradient(160deg,#1a0810,#3e1520 45%,#2a1015);overflow:hidden;}
+.doc-placeholder{width:100%;height:100%;min-height:580px;display:flex;align-items:center;justify-content:center;position:relative;}
+.doc-orb{position:absolute;width:340px;height:340px;background:radial-gradient(circle at 40% 35%,rgba(200,169,110,0.07),transparent 70%);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
+.doc-monogram{width:180px;height:180px;border:1.5px solid rgba(200,169,110,0.28);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(200,169,110,0.035);position:relative;z-index:2;}
+.doc-monogram span{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:rgba(200,169,110,0.45);}
+.doc-ring1{position:absolute;width:340px;height:340px;border:1px solid rgba(200,169,110,0.055);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 4s ease-in-out infinite;}
+.doc-ring2{position:absolute;width:500px;height:500px;border:1px solid rgba(200,169,110,0.025);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 4s 1.5s ease-in-out infinite;}
+@keyframes ringPulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.02);}}
+.doc-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--deep) 0%,transparent 50%);}
+
+.doc-tag{position:absolute;bottom:34px;left:34px;z-index:3;background:rgba(10,3,3,0.92);backdrop-filter:blur(16px);border:1px solid rgba(200,169,110,0.16);padding:17px 22px;}
+.doc-tag .dt{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.doc-tag .dn{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ivory);}
+.doc-tag .ds{font-size:11px;color:var(--muted);margin-top:3px;}
+
+.doc-info-side{padding:85px 50px;display:flex;flex-direction:column;justify-content:center;}
+.doc-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:300;line-height:1.65;color:var(--ivory);margin:26px 0;border-left:2px solid var(--gold);padding-left:22px;}
+.doc-credentials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px;}
+.cred-box{border:1px solid rgba(200,169,110,0.11);padding:16px;transition:.3s;position:relative;overflow:hidden;}
+.cred-box::before{content:'';position:absolute;inset:0;background:rgba(200,169,110,0.035);transform:scaleX(0);transform-origin:left;transition:.4s;}
+.cred-box:hover::before{transform:scaleX(1);}
+.cred-box:hover{border-color:rgba(200,169,110,0.3);}
+.cred-box .cv{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--gold-light);}
+.cred-box .cl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+
+/* ── WHY US ── */
+.why-section{background:var(--charcoal);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,169,110,0.07);margin-top:52px;}
+.why-card{background:var(--charcoal);padding:38px 24px;text-align:center;transition:.35s;position:relative;overflow:hidden;}
+.why-card::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:.4s;}
+.why-card:hover::before{width:60%;}
+.why-card:hover{background:rgba(200,169,110,0.035);}
+.w-icon{font-size:28px;margin-bottom:17px;}
+.w-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:9px;}
+.w-desc{font-size:12px;color:var(--muted);line-height:1.8;}
+
+/* ── APPOINTMENT ── */
+.appt-section{background:var(--cream);color:var(--deep);display:grid;grid-template-columns:1fr 1fr;}
+.appt-left{padding:85px 50px;display:flex;flex-direction:column;justify-content:center;}
+.appt-left .section-label{color:var(--burgundy);}
+.appt-left .section-label::before{background:var(--burgundy);}
+.appt-left .section-title{color:var(--deep);}
+.appt-left .section-sub{color:#5a4030;}
+.appt-features{margin-top:34px;display:flex;flex-direction:column;gap:16px;}
+.af{display:flex;gap:13px;align-items:flex-start;}
+.af-icon{width:36px;height:36px;border:1px solid rgba(122,48,48,0.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:.3s;}
+.af:hover .af-icon{border-color:rgba(122,48,48,0.5);background:rgba(122,48,48,0.05);}
+.af-text h4{font-size:13px;font-weight:600;color:var(--deep);margin-bottom:3px;}
+.af-text p{font-size:12px;color:#6a5040;line-height:1.7;}
+
+/* ── FORM SIDE ── */
+.appt-form-side{background:var(--deep);padding:75px 50px;display:flex;flex-direction:column;justify-content:center;}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px;color:var(--ivory);}
+.form-wa-note{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--wa);margin-bottom:28px;opacity:.85;}
+.form-wa-note::before{content:'';width:16px;height:1px;background:var(--wa);}
+.wa-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:500;}
+
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{margin-bottom:14px;position:relative;}
+.fg label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;transition:.3s;}
+.fg:focus-within label{color:var(--gold);}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 0;background:transparent;border:none;border-bottom:1px solid rgba(249,245,240,0.11);color:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;font-weight:300;outline:none;transition:.3s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-bottom-color:var(--gold);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(249,245,240,0.2);}
+.fg select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(200,169,110,0.5)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;}
+.fg select option{background:#2d1f1f;color:var(--ivory);}
+.fg textarea{resize:none;height:62px;}
+
+/* Field validation glow */
+.fg input:valid:not(:placeholder-shown),.fg select:valid:not([value=""]){border-bottom-color:rgba(74,222,128,0.4);}
+
+/* ── SUBMIT BUTTON ── */
+.form-submit-wrap{margin-top:10px;position:relative;}
+.form-submit{width:100%;padding:14px;background:var(--wa);color:#fff;border:none;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:.35s;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;}
+.form-submit::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.1);transform:translateX(-101%);transition:.4s;}
+.form-submit:hover::before{transform:translateX(0);}
+.form-submit:hover{background:#1eb858;}
+.form-submit .wa-icon{font-size:16px;}
+.form-submit:disabled{opacity:.55;pointer-events:none;}
+.submit-note{font-size:10px;color:rgba(249,245,240,0.28);text-align:center;margin-top:10px;letter-spacing:.5px;}
+
+/* Loading spinner on submit */
+.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-submit.loading .spinner{display:block;}
+.form-submit.loading .btn-text,.form-submit.loading .wa-icon{display:none;}
+
+/* ── TESTIMONIALS ── */
+.test-section{background:var(--deep);position:relative;overflow:hidden;}
+.test-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:480px;color:rgba(200,169,110,0.022);position:absolute;top:-90px;left:-25px;line-height:1;pointer-events:none;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px;}
+.test-card{border:1px solid rgba(200,169,110,0.09);padding:30px;transition:.35s;position:relative;}
+.test-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:.4s;}
+.test-card:hover::before{transform:scaleX(1);}
+.test-card:hover{border-color:rgba(200,169,110,0.28);}
+.test-stars{color:var(--gold);font-size:12px;letter-spacing:3px;margin-bottom:16px;}
+.test-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:300;line-height:1.75;color:rgba(249,245,240,0.78);margin-bottom:20px;}
+.test-author{display:flex;align-items:center;gap:11px;}
+.t-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--burgundy));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;}
+.t-name{font-size:13px;font-weight:500;}
+.t-loc{font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+
+/* ── CTA ── */
+.cta-section{padding:80px 50px;background:var(--burgundy);text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,169,110,0.07),transparent 70%);pointer-events:none;}
+.cta-section .section-label{justify-content:center;color:var(--gold-light);}
+.cta-section .section-label::before{background:var(--gold-light);}
+.cta-section .section-title{color:var(--ivory);margin:0 auto 13px;}
+.cta-section .section-sub{margin:0 auto 34px;color:rgba(249,245,240,0.65);}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* ── FOOTER ── */
+footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,169,110,0.08);}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:44px;}
+.footer-brand .fb-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:8px;}
+.footer-brand .fb-logo span{color:var(--gold);}
+.footer-brand p{font-size:12px;color:var(--muted);line-height:1.9;max-width:210px;margin-bottom:22px;}
+.social-row{display:flex;gap:9px;}
+.soc{width:32px;height:32px;border:1px solid rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--muted);transition:.3s;font-family:'Jost',sans-serif;letter-spacing:.5px;}
+.soc:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.footer-col a{display:block;font-size:12px;color:var(--muted);margin-bottom:9px;transition:.2s;}
+.footer-col a:hover{color:var(--ivory);padding-left:4px;}
+.footer-divider{border:none;border-top:1px solid rgba(200,169,110,0.06);margin:0 0 22px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:11px;color:rgba(138,112,96,0.38);}
+.footer-links{display:flex;gap:18px;}
+.footer-links a{font-size:11px;color:rgba(138,112,96,0.38);transition:.2s;}
+.footer-links a:hover{color:var(--muted);}
+
+/* ── FLOATING BUTTONS ── */
+.fab-col{position:fixed;bottom:28px;right:22px;display:flex;flex-direction:column;gap:10px;z-index:500;}
+.fab{width:50px;height:50px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:19px;transition:.3s;box-shadow:0 6px 22px rgba(0,0,0,0.4);}
+.fab:hover{transform:scale(1.1) translateY(-2px);}
+.fab-wa{background:#25d366;}
+.fab-call{background:var(--gold);color:var(--deep);}
+.fab-wrap{position:relative;display:flex;align-items:center;}
+.fab-tip{position:absolute;right:60px;background:rgba(10,3,3,0.96);border:1px solid rgba(200,169,110,0.16);color:var(--ivory);font-size:10px;letter-spacing:1px;white-space:nowrap;padding:6px 12px;opacity:0;pointer-events:none;transition:.2s;font-family:'Jost',sans-serif;}
+.fab-wrap:hover .fab-tip{opacity:1;}
+
+/* ── PULSE ON WA BUTTON ── */
+.fab-wa-pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.45);animation:waPulse 2s ease-out infinite;}
+@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:.85s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:.85s ease;}
+.reveal-left.in{opacity:1;transform:translateX(0);}
+
+/* ── MOBILE ── */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:120px 26px 75px;}
+  .hero h1{font-size:50px;}
+  nav{padding:14px 22px;}
+  nav.scrolled{padding:9px 22px;}
+  .nav-center{display:none;}
+  .section,.infertility-section{padding:65px 22px;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .inf-grid{grid-template-columns:1fr;}
+  .inf-card{grid-template-columns:1fr;}
+  .inf-img-wrap,.inf-img{width:100%;height:200px;min-height:unset;}
+  .doctor-section{grid-template-columns:1fr;}
+  .appt-section{grid-template-columns:1fr;}
+  .appt-left{padding:60px 22px;}
+  .appt-form-side{padding:60px 22px;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .cta-section{padding:60px 22px;}
+  footer{padding:55px 22px 24px;}
+}
+@media(max-width:580px){
+  .services-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .f-row{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+  .hero h1{font-size:40px;}
+  .section-title{font-size:38px;}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="curDot" style="top:0;left:0;"><div class="cur-dot"></div></div>
+<div class="cur" id="curRing" style="top:0;left:0;"><div class="cur-ring"></div></div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast">
+  <div class="toast-icon">✅</div>
+  <div class="toast-body">
+    <h4>Redirecting to WhatsApp</h4>
+    <p>Your appointment details are ready. WhatsApp will open to send the message to Dr. Priyenka's team.</p>
+  </div>
+  <button class="toast-close" onclick="closeToast()">✕</button>
+</div>
+
+<!-- EMERGENCY BAR -->
+<div class="e-bar">
+  <div class="e-bar-left">
+    <span>📍 Tirunelveli, Tamil Nadu</span>
+    <span>🕐 Mon – Sat &nbsp;|&nbsp; 9 AM – 8 PM</span>
+  </div>
+  <a href="tel:+916374315412">📞 +91 63743 15412 &nbsp;—&nbsp; Call Now</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a href="#home" class="logo">
+    <span class="logo-the">The</span>
+    <div class="logo-one-wrap">
+      <span class="logo-big">O</span>
+      <svg class="logo-face-svg" viewBox="0 0 28 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 2.5C8.5 2.5 4.5 7 4.5 13C4.5 17.5 6.5 21.5 9.5 24C7.5 25 5.5 27 5.5 30C5.5 33 7.5 35.5 10.5 36.5C11.5 37.5 12.5 38 14 38C15.5 38 16.5 37.5 17.5 36.5C20.5 35.5 22.5 33 22.5 30C22.5 27 20.5 25 18.5 24C21.5 21.5 23.5 17.5 23.5 13C23.5 7 19.5 2.5 14 2.5Z" fill="rgba(200,169,110,0.1)" stroke="rgba(200,169,110,0.52)" stroke-width="0.7"/>
+        <path d="M14 2.5C10.5 0.8 6.5 2.5 4.5 6C3 9 4 12.5 6 14.5C5.5 12.5 5.5 9.5 7.5 7.5C9 5.5 11.5 4.5 14 4" fill="rgba(200,169,110,0.25)"/>
+        <path d="M14 2.5C17.5 0.8 21.5 2.5 23.5 6C25 9 24 12.5 22 14.5C22.5 12.5 22.5 9.5 20.5 7.5C19 5.5 16.5 4.5 14 4" fill="rgba(200,169,110,0.25)"/>
+      </svg>
+    </div>
+    <span class="logo-big" style="margin-left:1px;">NE</span>
+    <span class="logo-aesthetics">Aesthetics</span>
+  </a>
+
+  <div class="nav-center">
+    <a href="#home">Home</a>
+    <a href="#services">Treatments</a>
+    <a href="#infertility">Fertility</a>
+    <a href="#doctor">Doctor</a>
+    <a href="#appointment">Appointment</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+    <button class="nav-book" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Premium Aesthetics &amp; Fertility Clinic</div>
+    <h1>Beauty &amp; Life<br>Begin With <em>You</em></h1>
+    <p class="hero-sub">Advanced skin science, cosmetic treatments, infertility care, and women's wellness — by Dr. G. Parasakthi Priyenka.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Consultation</button>
+      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Treatments</button>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-bg">
+      <div style="position:absolute;width:320px;height:320px;border:1px solid rgba(200,169,110,0.09);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 5s ease-in-out infinite;"></div>
+      <div style="position:absolute;width:200px;height:200px;border:1px solid rgba(200,169,110,0.16);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 5s 1.2s ease-in-out infinite;"></div>
+      <div style="text-align:center;position:relative;z-index:2;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:108px;font-weight:300;color:rgba(200,169,110,0.07);line-height:1;">ONE</div>
+        <div style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:7px;color:rgba(200,169,110,0.18);text-transform:uppercase;margin-top:-10px;">Aesthetics</div>
+      </div>
+      <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+    </div>
+  </div>
+
+  <div class="hero-stat-strip">
+    <div class="h-stat"><div class="n">5000+</div><div class="l">Patients</div></div>
+    <div class="h-stat"><div class="n">18+</div><div class="l">Treatments</div></div>
+    <div class="h-stat"><div class="n">5 ★</div><div class="l">Rating</div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="tick-item"><span class="tick-dot"></span>HydraFacial</span>
+    <span class="tick-item"><span class="tick-dot"></span>Botox &amp; Fillers</span>
+    <span class="tick-item"><span class="tick-dot"></span>Laser Hair Reduction</span>
+    <span class="tick-item"><span class="tick-dot"></span>Male Infertility</span>
+    <span class="tick-item"><span class="tick-dot"></span>Female Infertility</span>
+    <span class="tick-item"><span class="tick-dot"></span>IUI / IVF Support</span>
+    <span class="tick-item"><span class="tick-dot"></span>PRP / GFC Therapy</span>
+    <span class="tick-item"><span class="tick-dot"></span>PCOS / PCOD Care</span>
+    <span class="tick-item"><span class="tick-dot"></span>Chemical Peels</span>
+    <span class="tick-item"><span class="tick-dot"></span>Microneedling</span>
+    <span class="tick-item"><span class="tick-dot"></span>Pregnancy Care</span>
+    <span class="tick-item"><span class="tick-dot"></span>Cosmetic Gynaecology</span>
+    <span class="tick-item"><span class="tick-dot"></span>HydraFacial</span>
+    <span class="tick-item"><span class="tick-dot"></span>Botox &amp; Fillers</span>
+    <span class="tick-item"><span class="tick-dot"></span>Laser Hair Reduction</span>
+    <span class="tick-item"><span class="tick-dot"></span>Male Infertility</span>
+    <span class="tick-item"><span class="tick-dot"></span>Female Infertility</span>
+    <span class="tick-item"><span class="tick-dot"></span>IUI / IVF Support</span>
+    <span class="tick-item"><span class="tick-dot"></span>PRP / GFC Therapy</span>
+    <span class="tick-item"><span class="tick-dot"></span>PCOS / PCOD Care</span>
+    <span class="tick-item"><span class="tick-dot"></span>Chemical Peels</span>
+    <span class="tick-item"><span class="tick-dot"></span>Microneedling</span>
+    <span class="tick-item"><span class="tick-dot"></span>Pregnancy Care</span>
+    <span class="tick-item"><span class="tick-dot"></span>Cosmetic Gynaecology</span>
+  </div>
+</div>
+
+<!-- AESTHETIC TREATMENTS -->
+<section class="section services-section" id="services">
+  <div class="reveal" style="margin-bottom:48px;">
+    <div class="section-label">Aesthetic Treatments</div>
+    <h2 class="section-title">Our <em>Treatments</em></h2>
+    <p class="section-sub">Advanced skin science and aesthetic medicine delivered with clinical precision and genuine care.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="HydraFacial" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">01</div>
+        <div class="sc-title">HydraFacial</div>
+        <p class="sc-desc">Deep cleansing, exfoliation, and hydration therapy for radiant, glowing skin.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Chemical Peels" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">02</div>
+        <div class="sc-title">Chemical Peels</div>
+        <p class="sc-desc">Skin renewal targeting pigmentation, acne scars, and uneven texture for a flawless complexion.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80" alt="Botox and Fillers" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">03</div>
+        <div class="sc-title">Botox &amp; Fillers</div>
+        <p class="sc-desc">Expert wrinkle reduction and facial contouring with precise, natural-looking enhancements.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Laser Hair Reduction" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">04</div>
+        <div class="sc-title">Laser Hair Reduction</div>
+        <p class="sc-desc">Permanent, painless hair removal using advanced laser technology for smooth results.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1621607512022-6aecc4fed814?w=600&q=80" alt="PRP GFC Therapy" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">05</div>
+        <div class="sc-title">PRP / GFC Therapy</div>
+        <p class="sc-desc">Harness your body's growth factors for hair regrowth and complete skin rejuvenation.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="Microneedling" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">06</div>
+        <div class="sc-title">Microneedling</div>
+        <p class="sc-desc">Collagen induction therapy to visibly repair, tighten, and rejuvenate your skin from within.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80" alt="Pregnancy Care" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">07</div>
+        <div class="sc-title">Pregnancy Care</div>
+        <p class="sc-desc">Holistic maternity support and complete prenatal to postnatal care for mothers and babies.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_f6iFjpbL9qwHPAyk1ze6pLaODh7bsy1d5g&s" alt="PCOS PCOD" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">08</div>
+        <div class="sc-title">PCOS / PCOD</div>
+        <p class="sc-desc">Comprehensive hormonal balance and menstrual disorder management with personalised plans.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="sc-img-wrap">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80" alt="Cosmetic Gynaecology" loading="lazy">
+      </div>
+      <div class="sc-body">
+        <div class="sc-num">09</div>
+        <div class="sc-title">Cosmetic Gynaecology</div>
+        <p class="sc-desc">Advanced intimate wellness and cosmetic gynaecological procedures in a safe, private setting.</p>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFERTILITY -->
+<section class="infertility-section" id="infertility">
+  <div class="reveal">
+    <div class="section-label">Fertility Care</div>
+    <h2 class="section-title">Infertility <em>Treatments</em></h2>
+    <p class="section-sub">Compassionate, evidence-based fertility care for both men and women — helping you achieve the family you dream of.</p>
+  </div>
+  <div class="inf-grid reveal">
+    <div class="inf-card">
+      <div class="inf-img-wrap">
+        <img class="inf-img" src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&q=80" alt="Female Fertility" loading="lazy">
+      </div>
+      <div class="inf-body">
+        <div class="inf-gender female">Female Infertility</div>
+        <div class="inf-title">Fertility Evaluation &amp; Ovulation Induction</div>
+        <p class="inf-desc">Complete hormonal assessment, ovarian reserve testing, and tailored ovulation induction protocols to maximise natural conception chances.</p>
+        <div class="inf-tags">
+          <span class="inf-tag f">HSG</span>
+          <span class="inf-tag f">Hormonal Panel</span>
+          <span class="inf-tag f">Follicle Monitoring</span>
+          <span class="inf-tag f">Ovulation Induction</span>
+        </div>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Consult Now</button>
+      </div>
+    </div>
+    <div class="inf-card">
+      <div class="inf-img-wrap">
+        <img class="inf-img" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=500&q=80" alt="Male Infertility" loading="lazy">
+      </div>
+      <div class="inf-body">
+        <div class="inf-gender male">Male Infertility</div>
+        <div class="inf-title">Semen Analysis &amp; Male Factor Treatment</div>
+        <p class="inf-desc">Advanced semen analysis, sperm function testing, and targeted treatment for low sperm count, motility disorders, and hormonal imbalances in men.</p>
+        <div class="inf-tags">
+          <span class="inf-tag m">Semen Analysis</span>
+          <span class="inf-tag m">DNA Fragmentation</span>
+          <span class="inf-tag m">Hormonal Therapy</span>
+          <span class="inf-tag m">Lifestyle Counselling</span>
+        </div>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Consult Now</button>
+      </div>
+    </div>
+    <div class="inf-card">
+      <div class="inf-img-wrap">
+        <img class="inf-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500&q=80" alt="IUI IVF" loading="lazy">
+      </div>
+      <div class="inf-body">
+        <div class="inf-gender female">Female Infertility</div>
+        <div class="inf-title">IUI &amp; IVF Support</div>
+        <p class="inf-desc">Intrauterine Insemination and In-Vitro Fertilisation support with individualised stimulation protocols, embryo monitoring, and full cycle management.</p>
+        <div class="inf-tags">
+          <span class="inf-tag f">IUI</span>
+          <span class="inf-tag f">IVF</span>
+          <span class="inf-tag f">Embryo Transfer</span>
+          <span class="inf-tag f">Cycle Management</span>
+        </div>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Consult Now</button>
+      </div>
+    </div>
+    <div class="inf-card">
+      <div class="inf-img-wrap">
+        <img class="inf-img" src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=500&q=80" alt="Azoospermia" loading="lazy">
+      </div>
+      <div class="inf-body">
+        <div class="inf-gender male">Male Infertility</div>
+        <div class="inf-title">Azoospermia &amp; Surgical Sperm Retrieval</div>
+        <p class="inf-desc">Specialised evaluation and management of azoospermia, including TESA/PESA coordination and ART-compatible sperm retrieval options.</p>
+        <div class="inf-tags">
+          <span class="inf-tag m">Azoospermia</span>
+          <span class="inf-tag m">TESA / PESA</span>
+          <span class="inf-tag m">Varicocele</span>
+          <span class="inf-tag m">ART Coordination</span>
+        </div>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Consult Now</button>
+      </div>
+    </div>
+    <div class="inf-card">
+      <div class="inf-img-wrap">
+        <img class="inf-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Endometriosis PCOS" loading="lazy">
+      </div>
+      <div class="inf-body">
+        <div class="inf-gender female">Female Infertility</div>
+        <div class="inf-title">Endometriosis &amp; PCOS Fertility Management</div>
+        <p class="inf-desc">Targeted fertility treatment for women with endometriosis and PCOS — hormonal regulation, laparoscopy coordination, and medically optimised conception plans.</p>
+        <div class="inf-tags">
+          <span class="inf-tag f">Endometriosis</span>
+          <span class="inf-tag f">PCOS</span>
+          <span class="inf-tag f">Laparoscopy</span>
+          <span class="inf-tag f">Cycle Regulation</span>
+        </div>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Consult Now</button>
+      </div>
+    </div>
+    <div class="inf-card">
+      <div class="inf-img-wrap">
+        <img class="inf-img" src="https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=500&q=80" alt="Couple Counselling" loading="lazy">
+      </div>
+      <div class="inf-body">
+        <div class="inf-gender couple">Male &amp; Couple</div>
+        <div class="inf-title">Couple Fertility Counselling &amp; Preconception Care</div>
+        <p class="inf-desc">Holistic preconception health planning for both partners — nutritional guidance, genetic screening, lifestyle optimisation, and emotional support throughout.</p>
+        <div class="inf-tags">
+          <span class="inf-tag c">Preconception</span>
+          <span class="inf-tag f">Genetic Screening</span>
+          <span class="inf-tag m">Nutrition Plan</span>
+          <span class="inf-tag c">Couple Counselling</span>
+        </div>
+        <button class="sc-link" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Consult Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section class="doctor-section" id="doctor">
+  <div class="doc-img-side">
+    <div class="doc-placeholder">
+      <div class="doc-orb"></div>
+      <div class="doc-ring1"></div>
+      <div class="doc-ring2"></div>
+      <div class="doc-monogram"><span>P</span></div>
+    </div>
+    <div class="doc-img-overlay"></div>
+    <div class="doc-tag">
+      <div class="dt">Lead Consultant</div>
+      <div class="dn">Dr. G. Parasakthi Priyenka</div>
+      <div class="ds">Dermatology, Aesthetics &amp; Fertility</div>
+    </div>
+  </div>
+  <div class="doc-info-side reveal">
+    <div class="section-label">Meet Your Doctor</div>
+    <h2 class="section-title" style="color:var(--ivory);">The Art of <em>Confident</em> Living</h2>
+    <p style="font-size:13px;color:var(--muted);line-height:1.9;margin-top:10px;">Dr. G. Parasakthi Priyenka brings advanced expertise in dermatology, aesthetic medicine, and fertility care. With a deep commitment to personalised treatment, she ensures every patient feels heard, cared for, and confident.</p>
+    <blockquote class="doc-quote">"Every patient deserves care as unique as they are — in beauty, in health, and in the journey to parenthood."</blockquote>
+    <p style="font-size:13px;color:var(--muted);line-height:1.9;">Specialising in non-surgical aesthetics, women's health, and reproductive medicine, Dr. Priyenka combines clinical precision with genuine compassion — delivering results that transform both skin and lives.</p>
+    <div class="doc-credentials">
+      <div class="cred-box"><div class="cv">5000+</div><div class="cl">Patients Treated</div></div>
+      <div class="cred-box"><div class="cv">5 ★</div><div class="cl">Patient Rating</div></div>
+      <div class="cred-box"><div class="cv">18+</div><div class="cl">Specialisations</div></div>
+      <div class="cred-box"><div class="cv">100%</div><div class="cl">Safe Procedures</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section why-section">
+  <div class="reveal">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">Care You Can <em>Trust</em></h2>
+    <p class="section-sub">Where clinical excellence meets genuine compassion.</p>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="w-icon">🔬</div>
+      <div class="w-title">Clinical Precision</div>
+      <p class="w-desc">Every treatment is grounded in the latest medical science, performed with exacting care and expertise.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">🤍</div>
+      <div class="w-title">Personalised Plans</div>
+      <p class="w-desc">Treatment plans crafted exclusively around your unique needs, goals, and health profile.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">🔒</div>
+      <div class="w-title">Safe &amp; Certified</div>
+      <p class="w-desc">All procedures follow strict safety protocols using FDA-approved products and certified equipment.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">🌸</div>
+      <div class="w-title">Women's Wellness</div>
+      <p class="w-desc">A dedicated space for women and couples — sensitive, private, and completely judgement-free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<div class="appt-section" id="appointment">
+  <div class="appt-left reveal-left">
+    <div class="section-label">Book Now</div>
+    <h2 class="section-title">Schedule Your<br><em>Consultation</em></h2>
+    <p class="section-sub">Take the first step toward your best self. Fill the form — your details are sent directly via WhatsApp for instant confirmation.</p>
+    <div class="appt-features">
+      <div class="af">
+        <div class="af-icon">💬</div>
+        <div class="af-text"><h4>Sent via WhatsApp</h4><p>Your appointment details go directly to Dr. Priyenka's team on WhatsApp for fast response.</p></div>
+      </div>
+      <div class="af">
+        <div class="af-icon">⚡</div>
+        <div class="af-text"><h4>Instant Confirmation</h4><p>The team will confirm your slot within minutes of receiving your message.</p></div>
+      </div>
+      <div class="af">
+        <div class="af-icon">🔔</div>
+        <div class="af-text"><h4>Appointment Reminders</h4><p>We'll remind you before your visit so you never miss your slot.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="appt-form-side reveal">
+    <div class="form-title">Book an Appointment</div>
+    <div class="form-wa-note">Sent directly via WhatsApp</div>
+    <form id="bookForm" novalidate>
+      <div class="f-row">
+        <div class="fg"><label>Full Name *</label><input type="text" id="f-name" placeholder="Your name" required></div>
+        <div class="fg"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 XXXXX XXXXX" required></div>
+      </div>
+      <div class="f-row">
+        <div class="fg"><label>Preferred Date *</label><input type="date" id="f-date" required></div>
+        <div class="fg"><label>Preferred Time *</label><input type="time" id="f-time" required></div>
+      </div>
+      <div class="fg">
+        <label>Treatment Interested In *</label>
+        <select id="f-treatment" required>
+          <option value="">Select a treatment…</option>
+          <optgroup label="Aesthetic Treatments">
+            <option>HydraFacial</option>
+            <option>Chemical Peels</option>
+            <option>Botox &amp; Fillers</option>
+            <option>Laser Hair Reduction</option>
+            <option>PRP / GFC Therapy</option>
+            <option>Microneedling</option>
+            <option>Pregnancy Care</option>
+            <option>PCOS / PCOD</option>
+            <option>Cosmetic Gynaecology</option>
+          </optgroup>
+          <optgroup label="Fertility Treatments">
+            <option>Female Fertility Evaluation</option>
+            <option>Male Infertility / Semen Analysis</option>
+            <option>IUI Support</option>
+            <option>IVF Support</option>
+            <option>Endometriosis / PCOS Fertility</option>
+            <option>Couple Fertility Counselling</option>
+          </optgroup>
+          <option value="General Consultation">General Consultation</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message / Symptoms</label><textarea id="f-message" placeholder="Briefly describe your concerns…"></textarea></div>
+
+      <div class="form-submit-wrap">
+        <button type="submit" class="form-submit" id="submitBtn">
+          <span class="wa-icon">💬</span>
+          <span class="btn-text">Send via WhatsApp</span>
+          <div class="spinner"></div>
+        </button>
+      </div>
+      <p class="submit-note">WhatsApp will open with your details pre-filled. Simply press Send.</p>
+    </form>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section test-section">
+  <div class="reveal">
+    <div class="section-label">Patient Reviews</div>
+    <h2 class="section-title">What They <em>Say</em></h2>
+    <p class="section-sub">Real stories from our valued patients across Tirunelveli.</p>
+  </div>
+  <div class="test-grid reveal">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"Dr. Priyenka is absolutely wonderful. My skin has completely transformed after the HydraFacial sessions. I feel so confident now — the best clinic in Tirunelveli."</p>
+      <div class="test-author"><div class="t-av">K</div><div><div class="t-name">Kavitha R.</div><div class="t-loc">Tirunelveli</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"After two years of infertility struggles, Dr. Priyenka's treatment plan gave us hope and results. Her care is thorough, compassionate, and she explained everything patiently."</p>
+      <div class="test-author"><div class="t-av">M</div><div><div class="t-name">Meena &amp; Rajan</div><div class="t-loc">Tirunelveli</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"The laser hair reduction results are permanent and painless. The clinic is hygienic and professional. Dr. Priyenka made the whole experience safe and comfortable."</p>
+      <div class="test-author"><div class="t-av">P</div><div><div class="t-name">Preethi L.</div><div class="t-loc">Tirunelveli</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <div class="section-label">Get Started</div>
+    <h2 class="section-title" style="font-size:42px;">Ready to Begin Your<br>Journey to Wellness?</h2>
+    <p class="section-sub">Join thousands who trust The One Aesthetics for transformative skin, beauty, and fertility care.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book a Consultation</button>
+      <a href="tel:+916374315412"><button class="btn-ghost" style="border-color:rgba(249,245,240,0.36);">📞 Call Now</button></a>
+      <a href="https://wa.me/916374315412" target="_blank"><button class="btn-ghost" style="border-color:rgba(37,211,102,0.5);color:#4ade80;">💬 WhatsApp</button></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="fb-logo">The <span>One</span> Aesthetics</div>
+      <p>Your premier aesthetic, women's wellness, and fertility clinic in Tirunelveli, Tamil Nadu.</p>
+      <div class="social-row">
+        <div class="soc">fb</div>
+        <div class="soc">ig</div>
+        <div class="soc">yt</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="#home">Home</a>
+      <a href="#services">Treatments</a>
+      <a href="#infertility">Fertility Care</a>
+      <a href="#doctor">Dr. Priyenka</a>
+      <a href="#appointment">Appointment</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a>📍 Tirunelveli, Tamil Nadu</a>
+      <a href="tel:+916374315412">📞 +91 63743 15412</a>
+      <a href="https://wa.me/916374315412" target="_blank">💬 WhatsApp Us</a>
+      <a>🕐 Mon – Sat: 9 AM – 8 PM</a>
+    </div>
+    <div class="footer-col">
+      <h4>Treatments</h4>
+      <a href="#services">HydraFacial</a>
+      <a href="#services">Laser Hair Reduction</a>
+      <a href="#services">Botox &amp; Fillers</a>
+      <a href="#infertility">IUI / IVF Support</a>
+      <a href="#services">PCOS / PCOD Care</a>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <p>© 2026 The One Aesthetics, Tirunelveli. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING ACTION BUTTONS -->
+<div class="fab-col">
+  <div class="fab-wrap">
+    <div class="fab-tip">WhatsApp Us</div>
+    <a href="https://wa.me/916374315412" target="_blank" style="position:relative;display:block;">
+      <div class="fab-wa-pulse"></div>
+      <button class="fab fab-wa">💬</button>
+    </a>
+  </div>
+  <div class="fab-wrap">
+    <div class="fab-tip">Call Now</div>
+    <a href="tel:+916374315412">
+      <button class="fab fab-call">📞</button>
+    </a>
+  </div>
+</div>
+
+<script>
+/* ── CURSOR ── */
+const dot = document.getElementById('curDot');
+const ring = document.getElementById('curRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+});
+(function animR() {
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animR);
+})();
+
+/* ── NAVBAR ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+/* ── SCROLL REVEAL ── */
+const ro = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-left').forEach(el => ro.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('.reveal,.reveal-left').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('in');
+  });
+}, 80);
+
+/* ── HERO CANVAS ── */
+(function () {
+  const c = document.getElementById('heroCanvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const pts = Array.from({ length: 55 }, () => ({
+    x: Math.random(), y: Math.random(),
+    r: Math.random() * 1.2 + 0.3,
+    vx: (Math.random() - 0.5) * 0.00017,
+    vy: (Math.random() - 0.5) * 0.00017,
+    a: Math.random() * 0.3 + 0.07
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0;
+      if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x * c.width, p.y * c.height, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,169,110,${p.a})`; ctx.fill();
+    });
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const dx = (pts[i].x - pts[j].x) * c.width, dy = (pts[i].y - pts[j].y) * c.height;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 82) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(200,169,110,${0.09 * (1 - d / 82)})`;
+        ctx.lineWidth = 0.5;
+        ctx.moveTo(pts[i].x * c.width, pts[i].y * c.height);
+        ctx.lineTo(pts[j].x * c.width, pts[j].y * c.height);
+        ctx.stroke();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── DATE MIN ── */
+const di = document.getElementById('f-date');
+if (di) di.min = new Date().toISOString().split('T')[0];
+
+/* ── TOAST ── */
+let toastTimer;
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 6000);
+}
+function closeToast() {
+  document.getElementById('toast').classList.remove('show');
+  clearTimeout(toastTimer);
+}
+
+/* ── FORMAT TIME ── */
+function formatTime(t) {
+  if (!t) return '';
+  const [h, m] = t.split(':');
+  const hr = parseInt(h);
+  const ampm = hr >= 12 ? 'PM' : 'AM';
+  return `${hr % 12 || 12}:${m} ${ampm}`;
+}
+
+/* ── FORMAT DATE ── */
+function formatDate(d) {
+  if (!d) return '';
+  const dt = new Date(d + 'T00:00:00');
+  return dt.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+/* ── WHATSAPP FORM SUBMIT ── */
+document.getElementById('bookForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name     = document.getElementById('f-name').value.trim();
+  const phone    = document.getElementById('f-phone').value.trim();
+  const date     = document.getElementById('f-date').value;
+  const time     = document.getElementById('f-time').value;
+  const treatment = document.getElementById('f-treatment').value;
+  const message  = document.getElementById('f-message').value.trim();
+
+  // Validation
+  if (!name || !phone || !date || !time || !treatment) {
+    const fields = [
+      { id: 'f-name', val: name },
+      { id: 'f-phone', val: phone },
+      { id: 'f-date', val: date },
+      { id: 'f-time', val: time },
+      { id: 'f-treatment', val: treatment }
+    ];
+    fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      if (!f.val) {
+        el.style.borderBottomColor = '#f87171';
+        el.addEventListener('input', () => el.style.borderBottomColor = '', { once: true });
+      }
+    });
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  // Build beautiful WhatsApp message
+  const msg =
+`🌸 *New Appointment Request*
+━━━━━━━━━━━━━━━━━━━━
+*The One Aesthetics — Tirunelveli*
+
+👤 *Patient Name:* ${name}
+📞 *Contact:* ${phone}
+📅 *Preferred Date:* ${formatDate(date)}
+🕐 *Preferred Time:* ${formatTime(time)}
+💊 *Treatment:* ${treatment}
+${message ? `\n💬 *Message:*\n${message}` : ''}
+━━━━━━━━━━━━━━━━━━━━
+_Please confirm my appointment slot. Thank you!_`;
+
+  const waURL = `https://wa.me/916374315412?text=${encodeURIComponent(msg)}`;
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    window.open(waURL, '_blank');
+    showToast();
+    this.reset();
+  }, 900);
+});
+</script>
+</body>
+</html>
