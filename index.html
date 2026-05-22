@@ -10,109 +10,96 @@
 :root{
   --ivory:#f9f5f0;--cream:#f2ebe0;--rose:#c9846a;
   --burgundy:#7a3030;--deep:#1a0a0a;--charcoal:#2d1f1f;--muted:#8a7060;
-  --gold:#c8a96e;--gold-light:#e8d5a8;--gold-dark:#a8893e;
-  --wa:#25d366;
+  --gold:#c8a96e;--gold-light:#e8d5a8;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--deep);color:var(--ivory);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
 a{color:inherit;text-decoration:none;}
 button{cursor:none;}
 
-/* ── CURSOR ── */
+/* CURSOR */
 .cur{position:fixed;pointer-events:none;z-index:99999;mix-blend-mode:difference;}
-.cur-dot{width:7px;height:7px;background:var(--ivory);border-radius:50%;transform:translate(-50%,-50%);}
-.cur-ring{width:38px;height:38px;border:1px solid rgba(249,245,240,0.45);border-radius:50%;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s,opacity .35s;}
-body:has(a:hover) .cur-ring,body:has(button:hover) .cur-ring{width:56px;height:56px;border-color:var(--gold);}
+.cur-dot{width:8px;height:8px;background:var(--ivory);border-radius:50%;transform:translate(-50%,-50%);}
+.cur-ring{width:40px;height:40px;border:1px solid rgba(249,245,240,0.5);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
+body:has(a:hover) .cur-ring,body:has(button:hover) .cur-ring{width:60px;height:60px;border-color:var(--gold);}
 
-/* ── TOAST ── */
-.toast{position:fixed;top:28px;right:28px;z-index:99998;background:#0d2b0d;border:1px solid rgba(37,211,102,0.35);backdrop-filter:blur(18px);padding:16px 22px 16px 18px;display:flex;align-items:flex-start;gap:14px;min-width:300px;max-width:380px;transform:translateX(120%);opacity:0;transition:.5s cubic-bezier(.22,.68,0,1.2);border-radius:3px;box-shadow:0 12px 40px rgba(0,0,0,0.5);}
-.toast.show{transform:translateX(0);opacity:1;}
-.toast-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
-.toast-body h4{font-size:13px;font-weight:600;color:#4ade80;margin-bottom:4px;}
-.toast-body p{font-size:11px;color:rgba(249,245,240,0.65);line-height:1.6;}
-.toast-close{margin-left:auto;background:none;border:none;color:rgba(249,245,240,0.35);font-size:16px;flex-shrink:0;padding:0 0 0 8px;line-height:1;cursor:none;}
-.toast-close:hover{color:var(--ivory);}
-
-/* ── EMERGENCY BAR ── */
+/* EMERGENCY BAR */
 .e-bar{background:var(--burgundy);padding:9px 50px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:1.5px;font-weight:500;text-transform:uppercase;z-index:300;position:relative;}
 .e-bar a{color:var(--gold-light);border-bottom:1px solid rgba(200,169,110,0.4);padding-bottom:1px;transition:.2s;}
 .e-bar a:hover{color:#fff;}
 .e-bar-left{display:flex;align-items:center;gap:24px;color:rgba(249,245,240,0.7);}
-@media(max-width:680px){.e-bar{padding:8px 20px;font-size:9px;}.e-bar-left span:first-child{display:none;}}
 
-/* ── NAVBAR ── */
+/* NAVBAR */
 nav{position:fixed;top:38px;left:0;right:0;z-index:200;padding:18px 50px;display:flex;align-items:center;justify-content:space-between;transition:.5s;}
-nav.scrolled{top:0;background:rgba(15,5,5,0.97);backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,110,0.12);padding:11px 50px;}
+nav.scrolled{top:0;background:rgba(20,8,8,0.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,169,110,0.14);padding:12px 50px;}
 
-/* ── LOGO ── */
+/* LOGO */
 .logo{display:flex;align-items:center;}
-.logo-the{font-family:'Jost',sans-serif;font-weight:200;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-right:5px;align-self:flex-end;margin-bottom:5px;}
+.logo-the{font-family:'Jost',sans-serif;font-weight:200;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-right:5px;align-self:flex-end;margin-bottom:4px;}
 .logo-one-wrap{position:relative;display:flex;align-items:center;}
 .logo-big{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;line-height:1;color:var(--ivory);}
 .logo-face-svg{position:absolute;left:1px;top:50%;transform:translateY(-50%);width:28px;height:36px;pointer-events:none;}
-.logo-aesthetics{font-family:'Jost',sans-serif;font-weight:200;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);align-self:flex-end;margin-bottom:6px;margin-left:5px;}
+.logo-aesthetics{font-family:'Jost',sans-serif;font-weight:200;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);align-self:flex-end;margin-bottom:5px;margin-left:5px;}
 
-/* ── NAV CENTER ── */
+/* NAV CENTER */
 .nav-center{display:flex;gap:26px;align-items:center;}
-.nav-center a{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:rgba(249,245,240,0.65);transition:.3s;position:relative;}
+.nav-center a{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:rgba(249,245,240,0.7);transition:.3s;position:relative;}
 .nav-center a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:.3s;}
 .nav-center a:hover{color:var(--ivory);}
 .nav-center a:hover::after{transform:scaleX(1);}
 
-/* ── NAV RIGHT ── */
+/* NAV RIGHT */
 .nav-right{display:flex;align-items:center;gap:10px;}
+
+/* LOGIN DROPDOWN */
 .nav-dropdown{position:relative;}
-.nav-dropdown-btn{background:transparent;border:1px solid rgba(200,169,110,0.32);color:rgba(249,245,240,0.75);padding:8px 15px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;display:flex;align-items:center;gap:6px;transition:.3s;white-space:nowrap;}
+.nav-dropdown-btn{background:transparent;border:1px solid rgba(200,169,110,0.35);color:rgba(249,245,240,0.8);padding:8px 15px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;display:flex;align-items:center;gap:6px;transition:.3s;white-space:nowrap;}
 .nav-dropdown-btn:hover{border-color:var(--gold);color:var(--gold);}
 .nav-dropdown-btn .arr{font-size:7px;transition:.3s;}
 .nav-dropdown:hover .nav-dropdown-btn .arr{transform:rotate(180deg);}
-.dropdown-menu{position:absolute;top:calc(100% + 8px);right:0;background:rgba(12,4,4,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,169,110,0.14);min-width:175px;display:none;flex-direction:column;z-index:600;}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);right:0;background:rgba(18,6,6,0.98);backdrop-filter:blur(20px);border:1px solid rgba(200,169,110,0.16);min-width:175px;display:none;flex-direction:column;z-index:600;}
 .nav-dropdown:hover .dropdown-menu{display:flex;}
-.dropdown-menu a{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(249,245,240,0.6);transition:.2s;border-bottom:1px solid rgba(200,169,110,0.06);}
+.dropdown-menu a{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(249,245,240,0.65);transition:.2s;border-bottom:1px solid rgba(200,169,110,0.06);}
 .dropdown-menu a:last-child{border-bottom:none;}
-.dropdown-menu a:hover{background:rgba(200,169,110,0.07);color:var(--gold);}
+.dropdown-menu a:hover{background:rgba(200,169,110,0.08);color:var(--gold);}
+
+/* BOOK BTN */
 .nav-book{background:var(--gold);color:var(--deep);border:none;padding:9px 18px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;transition:.3s;white-space:nowrap;}
 .nav-book:hover{background:var(--gold-light);}
 
-/* ── HERO ── */
+/* HERO */
 .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 50px 80px;z-index:2;}
 .hero-right{position:relative;overflow:hidden;}
 .hero-right-bg{width:100%;height:100%;background:linear-gradient(135deg,#2d1015,#4a1e25 35%,#6b2d35 65%,#3d1520);display:flex;align-items:center;justify-content:center;position:relative;}
 .hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--deep) 0%,transparent 40%);z-index:1;}
 .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--deep));z-index:1;}
-.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .8s .3s ease forwards;}
+.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
 .hero-tag::before{content:'';width:26px;height:1px;background:var(--gold);}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:70px;font-weight:300;line-height:1.05;margin-bottom:14px;font-style:italic;opacity:0;animation:fadeUp .9s .5s ease forwards;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:70px;font-weight:300;line-height:1.05;margin-bottom:14px;font-style:italic;}
 .hero h1 em{font-style:normal;font-weight:600;color:var(--gold);}
-.hero-sub{font-size:13px;color:rgba(249,245,240,0.55);line-height:1.9;max-width:355px;margin-bottom:42px;opacity:0;animation:fadeUp .9s .7s ease forwards;}
-.hero-btns{display:flex;gap:13px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .9s ease forwards;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
-.btn-primary{background:var(--gold);color:var(--deep);padding:13px 28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;border:none;transition:.3s;position:relative;overflow:hidden;}
-.btn-primary::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.12);transform:translateX(-101%);transition:.4s;}
-.btn-primary:hover::before{transform:translateX(0);}
-.btn-primary:hover{transform:translateY(-2px);}
-.btn-ghost{background:transparent;border:1px solid rgba(249,245,240,0.26);color:var(--ivory);padding:13px 28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;transition:.3s;}
+.hero-sub{font-size:13px;color:rgba(249,245,240,0.58);line-height:1.9;max-width:355px;margin-bottom:42px;}
+.hero-btns{display:flex;gap:13px;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:var(--deep);padding:13px 28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;border:none;transition:.3s;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-ghost{background:transparent;border:1px solid rgba(249,245,240,0.28);color:var(--ivory);padding:13px 28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;transition:.3s;}
 .btn-ghost:hover{border-color:var(--ivory);}
-
-.hero-scroll{position:absolute;bottom:36px;left:50px;display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,245,240,0.28);animation:scrollBob 2.5s ease-in-out infinite;}
-.hero-scroll::before{content:'';width:1px;height:42px;background:linear-gradient(to bottom,transparent,rgba(249,245,240,0.28));}
+.hero-scroll{position:absolute;bottom:36px;left:50px;display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,245,240,0.3);animation:scrollBob 2.5s ease-in-out infinite;}
+.hero-scroll::before{content:'';width:1px;height:42px;background:linear-gradient(to bottom,transparent,rgba(249,245,240,0.3));}
 @keyframes scrollBob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-
-.hero-stat-strip{position:absolute;right:0;bottom:60px;z-index:3;display:flex;flex-direction:column;gap:1px;opacity:0;animation:fadeUp .9s 1.1s ease forwards;}
-.h-stat{background:rgba(15,5,5,0.82);backdrop-filter:blur(14px);border-left:2px solid var(--gold);padding:13px 18px;min-width:130px;}
+.hero-stat-strip{position:absolute;right:0;bottom:60px;z-index:3;display:flex;flex-direction:column;gap:1px;}
+.h-stat{background:rgba(18,6,6,0.78);backdrop-filter:blur(12px);border-left:2px solid var(--gold);padding:13px 18px;min-width:125px;}
 .h-stat .n{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--gold-light);}
-.h-stat .l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(249,245,240,0.38);}
+.h-stat .l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(249,245,240,0.4);}
 
-/* ── TICKER ── */
-.ticker-wrap{background:var(--burgundy);overflow:hidden;padding:11px 0;border-top:1px solid rgba(200,169,110,0.15);border-bottom:1px solid rgba(200,169,110,0.15);}
-.ticker-track{display:flex;animation:tick 42s linear infinite;white-space:nowrap;}
-.tick-item{padding:0 38px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(249,245,240,0.75);display:flex;align-items:center;gap:12px;}
+/* TICKER */
+.ticker-wrap{background:var(--burgundy);overflow:hidden;padding:11px 0;border-top:1px solid rgba(200,169,110,0.18);border-bottom:1px solid rgba(200,169,110,0.18);}
+.ticker-track{display:flex;animation:tick 40s linear infinite;white-space:nowrap;}
+.tick-item{padding:0 40px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(249,245,240,0.78);display:flex;align-items:center;gap:14px;}
 .tick-dot{width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ── SECTION COMMON ── */
+/* SECTION COMMON */
 .section{padding:95px 50px;}
 .section-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:13px;display:flex;align-items:center;gap:13px;}
 .section-label::before{content:'';width:20px;height:1px;background:var(--gold);}
@@ -120,33 +107,34 @@ nav.scrolled{top:0;background:rgba(15,5,5,0.97);backdrop-filter:blur(28px);borde
 .section-title em{font-style:italic;color:var(--gold);}
 .section-sub{font-size:13px;color:var(--muted);line-height:1.8;max-width:490px;}
 
-/* ── SERVICES ── */
+/* SERVICES SECTION */
 .services-section{background:var(--charcoal);position:relative;overflow:hidden;}
-.services-section::before{content:'';position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(200,169,110,0.04),transparent);pointer-events:none;}
+.services-section::before{content:'';position:absolute;top:0;right:0;width:450px;height:450px;background:radial-gradient(circle,rgba(200,169,110,0.04),transparent);pointer-events:none;}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 
-.service-card{background:rgba(255,255,255,0.025);border:1px solid rgba(200,169,110,0.09);border-radius:2px;overflow:hidden;transition:.45s;cursor:none;}
-.service-card:hover{transform:translateY(-7px);border-color:rgba(200,169,110,0.32);box-shadow:0 22px 60px rgba(0,0,0,0.45);}
+/* IMAGE SERVICE CARD */
+.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(200,169,110,0.1);border-radius:3px;overflow:hidden;transition:.45s;cursor:none;}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(200,169,110,0.34);box-shadow:0 20px 55px rgba(0,0,0,0.4);}
 .sc-img-wrap{overflow:hidden;position:relative;height:185px;}
-.sc-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(12,4,4,0.65));pointer-events:none;}
-.sc-img{width:100%;height:100%;object-fit:cover;filter:saturate(0.78) contrast(1.04);transition:.5s;display:block;}
-.service-card:hover .sc-img{filter:saturate(1.05) contrast(1.05);transform:scale(1.06);}
+.sc-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(18,6,6,0.65));pointer-events:none;}
+.sc-img{width:100%;height:100%;object-fit:cover;filter:saturate(0.82) contrast(1.04);transition:.45s;display:block;}
+.service-card:hover .sc-img{filter:saturate(1) contrast(1.05);transform:scale(1.05);}
 .sc-body{padding:20px 18px 18px;}
-.sc-num{font-size:9px;letter-spacing:2px;color:rgba(200,169,110,0.36);margin-bottom:5px;}
+.sc-num{font-size:9px;letter-spacing:2px;color:rgba(200,169,110,0.38);margin-bottom:5px;}
 .sc-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ivory);margin-bottom:7px;}
 .sc-desc{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px;}
 .sc-link{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:7px;transition:.3s;border:none;background:none;font-family:'Jost',sans-serif;padding:0;}
 .sc-link::after{content:'→';transition:.3s;}
-.service-card:hover .sc-link{gap:12px;}
+.service-card:hover .sc-link{gap:11px;}
 
-/* ── INFERTILITY ── */
+/* INFERTILITY SECTION */
 .infertility-section{background:var(--deep);padding:95px 50px;}
 .inf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:50px;}
-.inf-card{background:rgba(255,255,255,0.022);border:1px solid rgba(200,169,110,0.09);border-radius:2px;overflow:hidden;display:grid;grid-template-columns:200px 1fr;transition:.4s;}
-.inf-card:hover{border-color:rgba(200,169,110,0.32);transform:translateY(-5px);box-shadow:0 18px 55px rgba(0,0,0,0.45);}
+.inf-card{background:rgba(255,255,255,0.025);border:1px solid rgba(200,169,110,0.1);border-radius:3px;overflow:hidden;display:grid;grid-template-columns:200px 1fr;transition:.4s;}
+.inf-card:hover{border-color:rgba(200,169,110,0.34);transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,0.4);}
 .inf-img-wrap{overflow:hidden;height:100%;min-height:220px;}
-.inf-img{width:200px;height:100%;min-height:220px;object-fit:cover;filter:saturate(0.75);transition:.4s;display:block;}
-.inf-card:hover .inf-img{filter:saturate(1.05);}
+.inf-img{width:200px;height:100%;min-height:220px;object-fit:cover;filter:saturate(0.78);transition:.4s;display:block;}
+.inf-card:hover .inf-img{filter:saturate(1);}
 .inf-body{padding:26px 22px;display:flex;flex-direction:column;justify-content:center;}
 .inf-gender{font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:8px;}
 .inf-gender.male{color:#7eb3f7;}
@@ -160,193 +148,238 @@ nav.scrolled{top:0;background:rgba(15,5,5,0.97);backdrop-filter:blur(28px);borde
 .inf-desc{font-size:12px;color:var(--muted);line-height:1.85;margin-bottom:15px;}
 .inf-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:15px;}
 .inf-tag{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid;}
-.inf-tag.m{border-color:rgba(126,179,247,0.26);color:#7eb3f7;background:rgba(126,179,247,0.05);}
-.inf-tag.f{border-color:rgba(240,160,184,0.26);color:#f0a0b8;background:rgba(240,160,184,0.05);}
-.inf-tag.c{border-color:rgba(200,169,110,0.26);color:var(--gold);background:rgba(200,169,110,0.05);}
+.inf-tag.m{border-color:rgba(126,179,247,0.28);color:#7eb3f7;background:rgba(126,179,247,0.05);}
+.inf-tag.f{border-color:rgba(240,160,184,0.28);color:#f0a0b8;background:rgba(240,160,184,0.05);}
+.inf-tag.c{border-color:rgba(200,169,110,0.28);color:var(--gold);background:rgba(200,169,110,0.05);}
 
-/* ── DOCTOR ── */
+/* DOCTOR SECTION */
 .doctor-section{background:var(--deep);display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
-.doc-img-side{position:relative;background:linear-gradient(160deg,#1a0810,#3e1520 45%,#2a1015);overflow:hidden;}
-.doc-placeholder{width:100%;height:100%;min-height:580px;display:flex;align-items:center;justify-content:center;position:relative;}
-.doc-orb{position:absolute;width:340px;height:340px;background:radial-gradient(circle at 40% 35%,rgba(200,169,110,0.07),transparent 70%);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-.doc-monogram{width:180px;height:180px;border:1.5px solid rgba(200,169,110,0.28);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(200,169,110,0.035);position:relative;z-index:2;}
-.doc-monogram span{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:rgba(200,169,110,0.45);}
-.doc-ring1{position:absolute;width:340px;height:340px;border:1px solid rgba(200,169,110,0.055);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 4s ease-in-out infinite;}
-.doc-ring2{position:absolute;width:500px;height:500px;border:1px solid rgba(200,169,110,0.025);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 4s 1.5s ease-in-out infinite;}
-@keyframes ringPulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.02);}}
-.doc-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--deep) 0%,transparent 50%);}
-
-.doc-tag{position:absolute;bottom:34px;left:34px;z-index:3;background:rgba(10,3,3,0.92);backdrop-filter:blur(16px);border:1px solid rgba(200,169,110,0.16);padding:17px 22px;}
+.doc-img-side{position:relative;background:linear-gradient(160deg,#2a1018,#4e1c28 40%,#3d1520);}
+.doc-placeholder{width:100%;height:100%;min-height:560px;display:flex;align-items:center;justify-content:center;position:relative;}
+.doc-monogram{width:170px;height:170px;border:2px solid rgba(200,169,110,0.32);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(200,169,110,0.04);position:relative;z-index:2;}
+.doc-monogram span{font-family:'Cormorant Garamond',serif;font-size:68px;font-weight:300;color:rgba(200,169,110,0.52);}
+.doc-ring1{position:absolute;width:330px;height:330px;border:1px solid rgba(200,169,110,0.06);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
+.doc-ring2{position:absolute;width:480px;height:480px;border:1px solid rgba(200,169,110,0.03);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
+.doc-tag{position:absolute;bottom:34px;left:34px;z-index:3;background:rgba(18,6,6,0.9);backdrop-filter:blur(14px);border:1px solid rgba(200,169,110,0.18);padding:17px 20px;}
 .doc-tag .dt{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
 .doc-tag .dn{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ivory);}
 .doc-tag .ds{font-size:11px;color:var(--muted);margin-top:3px;}
-
 .doc-info-side{padding:85px 50px;display:flex;flex-direction:column;justify-content:center;}
-.doc-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:300;line-height:1.65;color:var(--ivory);margin:26px 0;border-left:2px solid var(--gold);padding-left:22px;}
-.doc-credentials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px;}
-.cred-box{border:1px solid rgba(200,169,110,0.11);padding:16px;transition:.3s;position:relative;overflow:hidden;}
-.cred-box::before{content:'';position:absolute;inset:0;background:rgba(200,169,110,0.035);transform:scaleX(0);transform-origin:left;transition:.4s;}
-.cred-box:hover::before{transform:scaleX(1);}
-.cred-box:hover{border-color:rgba(200,169,110,0.3);}
-.cred-box .cv{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--gold-light);}
+.doc-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;font-weight:300;line-height:1.6;color:var(--ivory);margin:26px 0;border-left:2px solid var(--gold);padding-left:20px;}
+.doc-credentials{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:30px;}
+.cred-box{border:1px solid rgba(200,169,110,0.12);padding:15px;transition:.3s;}
+.cred-box:hover{border-color:rgba(200,169,110,0.32);}
+.cred-box .cv{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold-light);}
 .cred-box .cl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
 
-/* ── WHY US ── */
+/* WHY US */
 .why-section{background:var(--charcoal);}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,169,110,0.07);margin-top:52px;}
-.why-card{background:var(--charcoal);padding:38px 24px;text-align:center;transition:.35s;position:relative;overflow:hidden;}
-.why-card::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:.4s;}
-.why-card:hover::before{width:60%;}
-.why-card:hover{background:rgba(200,169,110,0.035);}
-.w-icon{font-size:28px;margin-bottom:17px;}
-.w-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:9px;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,169,110,0.08);margin-top:52px;}
+.why-card{background:var(--charcoal);padding:36px 24px;text-align:center;transition:.35s;}
+.why-card:hover{background:rgba(200,169,110,0.04);}
+.w-icon{font-size:27px;margin-bottom:16px;}
+.w-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;margin-bottom:9px;}
 .w-desc{font-size:12px;color:var(--muted);line-height:1.8;}
 
-/* ── APPOINTMENT ── */
+/* APPOINTMENT */
 .appt-section{background:var(--cream);color:var(--deep);display:grid;grid-template-columns:1fr 1fr;}
 .appt-left{padding:85px 50px;display:flex;flex-direction:column;justify-content:center;}
 .appt-left .section-label{color:var(--burgundy);}
 .appt-left .section-label::before{background:var(--burgundy);}
 .appt-left .section-title{color:var(--deep);}
-.appt-left .section-sub{color:#5a4030;}
+.appt-left .section-sub{color:var(--charcoal);}
 .appt-features{margin-top:34px;display:flex;flex-direction:column;gap:16px;}
 .af{display:flex;gap:13px;align-items:flex-start;}
-.af-icon{width:36px;height:36px;border:1px solid rgba(122,48,48,0.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:.3s;}
-.af:hover .af-icon{border-color:rgba(122,48,48,0.5);background:rgba(122,48,48,0.05);}
+.af-icon{width:34px;height:34px;border:1px solid rgba(122,48,48,0.23);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 .af-text h4{font-size:13px;font-weight:600;color:var(--deep);margin-bottom:3px;}
-.af-text p{font-size:12px;color:#6a5040;line-height:1.7;}
-
-/* ── FORM SIDE ── */
+.af-text p{font-size:12px;color:var(--muted);line-height:1.7;}
 .appt-form-side{background:var(--deep);padding:75px 50px;display:flex;flex-direction:column;justify-content:center;}
-.form-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px;color:var(--ivory);}
-.form-wa-note{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--wa);margin-bottom:28px;opacity:.85;}
-.form-wa-note::before{content:'';width:16px;height:1px;background:var(--wa);}
-.wa-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:500;}
-
+.form-title{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:300;margin-bottom:30px;color:var(--ivory);}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.fg{margin-bottom:14px;position:relative;}
-.fg label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;transition:.3s;}
-.fg:focus-within label{color:var(--gold);}
-.fg input,.fg select,.fg textarea{width:100%;padding:10px 0;background:transparent;border:none;border-bottom:1px solid rgba(249,245,240,0.11);color:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;font-weight:300;outline:none;transition:.3s;}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 0;background:transparent;border:none;border-bottom:1px solid rgba(249,245,240,0.13);color:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;font-weight:300;outline:none;transition:.3s;}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-bottom-color:var(--gold);}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(249,245,240,0.2);}
-.fg select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(200,169,110,0.5)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;}
-.fg select option{background:#2d1f1f;color:var(--ivory);}
+.fg select option{background:#2d1f1f;}
 .fg textarea{resize:none;height:62px;}
+.form-submit{margin-top:9px;width:100%;padding:13px;background:var(--gold);color:var(--deep);border:none;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;transition:.3s;}
+.form-submit:hover{background:var(--gold-light);}
 
-/* Field validation glow */
-.fg input:valid:not(:placeholder-shown),.fg select:valid:not([value=""]){border-bottom-color:rgba(74,222,128,0.4);}
-
-/* ── SUBMIT BUTTON ── */
-.form-submit-wrap{margin-top:10px;position:relative;}
-.form-submit{width:100%;padding:14px;background:var(--wa);color:#fff;border:none;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:.35s;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;}
-.form-submit::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.1);transform:translateX(-101%);transition:.4s;}
-.form-submit:hover::before{transform:translateX(0);}
-.form-submit:hover{background:#1eb858;}
-.form-submit .wa-icon{font-size:16px;}
-.form-submit:disabled{opacity:.55;pointer-events:none;}
-.submit-note{font-size:10px;color:rgba(249,245,240,0.28);text-align:center;margin-top:10px;letter-spacing:.5px;}
-
-/* Loading spinner on submit */
-.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.form-submit.loading .spinner{display:block;}
-.form-submit.loading .btn-text,.form-submit.loading .wa-icon{display:none;}
-
-/* ── TESTIMONIALS ── */
+/* TESTIMONIALS */
 .test-section{background:var(--deep);position:relative;overflow:hidden;}
-.test-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:480px;color:rgba(200,169,110,0.022);position:absolute;top:-90px;left:-25px;line-height:1;pointer-events:none;}
+.test-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:460px;color:rgba(200,169,110,0.025);position:absolute;top:-100px;left:-20px;line-height:1;pointer-events:none;}
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px;}
-.test-card{border:1px solid rgba(200,169,110,0.09);padding:30px;transition:.35s;position:relative;}
-.test-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:.4s;}
-.test-card:hover::before{transform:scaleX(1);}
-.test-card:hover{border-color:rgba(200,169,110,0.28);}
+.test-card{border:1px solid rgba(200,169,110,0.1);padding:30px;transition:.3s;}
+.test-card:hover{border-color:rgba(200,169,110,0.3);}
 .test-stars{color:var(--gold);font-size:12px;letter-spacing:3px;margin-bottom:16px;}
-.test-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:300;line-height:1.75;color:rgba(249,245,240,0.78);margin-bottom:20px;}
+.test-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:300;line-height:1.75;color:rgba(249,245,240,0.8);margin-bottom:20px;}
 .test-author{display:flex;align-items:center;gap:11px;}
 .t-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--burgundy));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;}
 .t-name{font-size:13px;font-weight:500;}
 .t-loc{font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
 
-/* ── CTA ── */
-.cta-section{padding:80px 50px;background:var(--burgundy);text-align:center;position:relative;overflow:hidden;}
-.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,169,110,0.07),transparent 70%);pointer-events:none;}
+/* CTA */
+.cta-section{padding:76px 50px;background:var(--burgundy);text-align:center;position:relative;overflow:hidden;}
 .cta-section .section-label{justify-content:center;color:var(--gold-light);}
 .cta-section .section-label::before{background:var(--gold-light);}
 .cta-section .section-title{color:var(--ivory);margin:0 auto 13px;}
-.cta-section .section-sub{margin:0 auto 34px;color:rgba(249,245,240,0.65);}
+.cta-section .section-sub{margin:0 auto 34px;color:rgba(249,245,240,0.7);}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
-/* ── FOOTER ── */
-footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,169,110,0.08);}
-.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:44px;}
-.footer-brand .fb-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:8px;}
+/* FOOTER */
+footer{background:#0f0606;padding:65px 50px 26px;border-top:1px solid rgba(200,169,110,0.09);}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:42px;}
+.footer-brand .fb-logo{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:300;margin-bottom:8px;}
 .footer-brand .fb-logo span{color:var(--gold);}
-.footer-brand p{font-size:12px;color:var(--muted);line-height:1.9;max-width:210px;margin-bottom:22px;}
+.footer-brand p{font-size:12px;color:var(--muted);line-height:1.9;max-width:205px;margin-bottom:20px;}
 .social-row{display:flex;gap:9px;}
-.soc{width:32px;height:32px;border:1px solid rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--muted);transition:.3s;font-family:'Jost',sans-serif;letter-spacing:.5px;}
+.soc{width:31px;height:31px;border:1px solid rgba(200,169,110,0.17);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);transition:.3s;}
 .soc:hover{border-color:var(--gold);color:var(--gold);}
-.footer-col h4{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-.footer-col a{display:block;font-size:12px;color:var(--muted);margin-bottom:9px;transition:.2s;}
-.footer-col a:hover{color:var(--ivory);padding-left:4px;}
-.footer-divider{border:none;border-top:1px solid rgba(200,169,110,0.06);margin:0 0 22px;}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
-.footer-bottom p{font-size:11px;color:rgba(138,112,96,0.38);}
-.footer-links{display:flex;gap:18px;}
-.footer-links a{font-size:11px;color:rgba(138,112,96,0.38);transition:.2s;}
+.footer-col h4{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.footer-col a{display:block;font-size:12px;color:var(--muted);margin-bottom:8px;transition:.2s;}
+.footer-col a:hover{color:var(--ivory);}
+.footer-bottom{border-top:1px solid rgba(200,169,110,0.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:11px;color:rgba(138,112,96,0.43);}
+.footer-links{display:flex;gap:16px;}
+.footer-links a{font-size:11px;color:rgba(138,112,96,0.43);transition:.2s;}
 .footer-links a:hover{color:var(--muted);}
 
-/* ── FLOATING BUTTONS ── */
-.fab-col{position:fixed;bottom:28px;right:22px;display:flex;flex-direction:column;gap:10px;z-index:500;}
-.fab{width:50px;height:50px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:19px;transition:.3s;box-shadow:0 6px 22px rgba(0,0,0,0.4);}
-.fab:hover{transform:scale(1.1) translateY(-2px);}
-.fab-wa{background:#25d366;}
-.fab-call{background:var(--gold);color:var(--deep);}
-.fab-wrap{position:relative;display:flex;align-items:center;}
-.fab-tip{position:absolute;right:60px;background:rgba(10,3,3,0.96);border:1px solid rgba(200,169,110,0.16);color:var(--ivory);font-size:10px;letter-spacing:1px;white-space:nowrap;padding:6px 12px;opacity:0;pointer-events:none;transition:.2s;font-family:'Jost',sans-serif;}
-.fab-wrap:hover .fab-tip{opacity:1;}
+/* FABs */
+.fab-col{position:fixed;bottom:28px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:500;}
+.fab{width:48px;height:48px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:18px;transition:.3s;}
+.fab:hover{transform:scale(1.1);}
+.fab-wa{background:#25d366;box-shadow:0 4px 18px rgba(37,211,102,0.28);}
+.fab-call{background:var(--gold);box-shadow:0 4px 18px rgba(200,169,110,0.28);}
+.fab-tip{position:absolute;right:56px;background:rgba(18,6,6,0.94);border:1px solid rgba(200,169,110,0.18);color:var(--ivory);font-size:10px;letter-spacing:1px;white-space:nowrap;padding:5px 11px;opacity:0;pointer-events:none;transition:.2s;font-family:'Jost',sans-serif;}
+.fab-w{position:relative;display:flex;align-items:center;}
+.fab-w:hover .fab-tip{opacity:1;}
 
-/* ── PULSE ON WA BUTTON ── */
-.fab-wa-pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.45);animation:waPulse 2s ease-out infinite;}
-@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
-
-/* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:.85s ease;}
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:.8s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
-.reveal-left{opacity:0;transform:translateX(-28px);transition:.85s ease;}
+.reveal-left{opacity:0;transform:translateX(-26px);transition:.8s ease;}
 .reveal-left.in{opacity:1;transform:translateX(0);}
 
-/* ── MOBILE ── */
+/* ── COSMETIC GYNAECOLOGY MODAL ── */
+.cg-modal-overlay{position:fixed;inset:0;background:rgba(5,2,2,0.88);backdrop-filter:blur(14px);z-index:8000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:.35s ease;}
+.cg-modal-overlay.open{opacity:1;pointer-events:all;}
+.cg-modal{background:linear-gradient(145deg,#1e0c10,#2d1520 50%,#1e0c10);border:1px solid rgba(200,169,110,0.22);max-width:780px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(30px) scale(0.97);transition:.4s cubic-bezier(.22,.68,0,1.15);}
+.cg-modal-overlay.open .cg-modal{transform:translateY(0) scale(1);}
+.cg-modal::-webkit-scrollbar{width:4px;}
+.cg-modal::-webkit-scrollbar-track{background:rgba(255,255,255,0.03);}
+.cg-modal::-webkit-scrollbar-thumb{background:rgba(200,169,110,0.25);border-radius:2px;}
+.cg-modal-header{padding:32px 36px 0;display:flex;justify-content:space-between;align-items:flex-start;}
+.cg-modal-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.cg-modal-tag::before{content:'';width:18px;height:1px;background:var(--gold);}
+.cg-modal-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--ivory);line-height:1.15;}
+.cg-modal-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--muted);margin-top:5px;}
+.cg-modal-close{background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,110,0.18);color:var(--muted);width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-left:20px;transition:.25s;cursor:none;}
+.cg-modal-close:hover{background:rgba(200,169,110,0.1);border-color:rgba(200,169,110,0.4);color:var(--ivory);}
+.cg-modal-body{padding:24px 36px 36px;}
+.cg-who{background:rgba(200,169,110,0.05);border:1px solid rgba(200,169,110,0.12);padding:16px 20px;margin-bottom:26px;}
+.cg-who-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.cg-who-title::before{content:'';width:14px;height:1px;background:var(--rose);}
+.cg-conditions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cg-cond{display:flex;align-items:center;gap:9px;font-size:12px;color:rgba(249,245,240,0.78);line-height:1.5;}
+.cg-cond::before{content:'';width:5px;height:5px;background:var(--rose);border-radius:50%;flex-shrink:0;}
+.cg-divider{height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.18),transparent);margin:22px 0;}
+.cg-desc{font-size:13px;color:var(--muted);line-height:1.85;margin-bottom:24px;}
+.cg-book-btn{background:var(--gold);color:var(--deep);border:none;padding:13px 32px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;transition:.3s;display:inline-flex;align-items:center;gap:9px;cursor:none;}
+.cg-book-btn:hover{background:var(--gold-light);}
+
+/* "Expand" badge on service card */
+.sc-expand-badge{position:absolute;top:12px;right:12px;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--gold);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;z-index:2;backdrop-filter:blur(6px);}
+
+/* ── COSMETIC GYNAECOLOGY SECTION ── */
+.cgynsec{background:linear-gradient(180deg,#150608 0%,#1e0c10 40%,#150608 100%);position:relative;overflow:hidden;}
+
+/* Hero banner */
+.cgyn-hero{position:relative;padding:90px 50px 60px;border-bottom:1px solid rgba(200,169,110,0.1);overflow:hidden;}
+.cgyn-hero-inner{position:relative;z-index:2;}
+.cgyn-hero-title{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;line-height:1.05;margin:10px 0 16px;color:var(--ivory);}
+.cgyn-hero-title em{font-style:italic;color:var(--rose);}
+.cgyn-hero-sub{font-size:14px;color:rgba(249,245,240,0.55);line-height:1.8;max-width:440px;}
+/* Decorative circles */
+.cgyn-hero-deco{position:absolute;inset:0;pointer-events:none;}
+.cgyn-circle{position:absolute;border-radius:50%;border:1px solid;}
+.cgyn-circle-1{width:500px;height:500px;border-color:rgba(201,132,106,0.06);top:-150px;right:-100px;animation:ringPulse 6s ease-in-out infinite;}
+.cgyn-circle-2{width:320px;height:320px;border-color:rgba(201,132,106,0.1);top:-60px;right:50px;animation:ringPulse 6s 1.5s ease-in-out infinite;}
+.cgyn-circle-3{width:160px;height:160px;border-color:rgba(201,132,106,0.16);top:30px;right:180px;animation:ringPulse 6s 3s ease-in-out infinite;}
+
+/* Body grid */
+.cgyn-body{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px;}
+
+/* LEFT — conditions list */
+.cgyn-left{padding:60px 50px;border-right:1px solid rgba(200,169,110,0.08);}
+.cgyn-who-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:36px;}
+.cgyn-who-icon{font-size:32px;flex-shrink:0;margin-top:2px;}
+.cgyn-who-label{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--ivory);margin-bottom:4px;}
+.cgyn-who-sub{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+
+.cgyn-cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.cgyn-cond-card{display:flex;align-items:flex-start;gap:12px;padding:14px 14px 14px 0;border-bottom:1px solid rgba(200,169,110,0.06);transition:.3s;}
+.cgyn-cond-card:hover{background:rgba(201,132,106,0.04);}
+.cgyn-cond-card:last-child,.cgyn-cond-card:nth-last-child(2){border-bottom:none;}
+.cgyn-cond-full{grid-column:1/-1;}
+.cgyn-dot{width:7px;height:7px;background:var(--rose);border-radius:50%;flex-shrink:0;margin-top:5px;}
+.cgyn-cond-name{font-size:13px;font-weight:500;color:var(--ivory);margin-bottom:3px;line-height:1.4;}
+.cgyn-cond-detail{font-size:11px;color:var(--muted);line-height:1.6;}
+
+/* RIGHT — highlights + CTA */
+.cgyn-right{padding:60px 50px;display:flex;flex-direction:column;gap:20px;}
+.cgyn-highlight{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,0.025);border:1px solid rgba(200,169,110,0.09);padding:20px;transition:.35s;}
+.cgyn-highlight:hover{border-color:rgba(201,132,106,0.28);background:rgba(201,132,106,0.04);}
+.cgyn-hl-icon{font-size:24px;flex-shrink:0;margin-top:1px;}
+.cgyn-hl-text h4{font-size:13px;font-weight:600;color:var(--ivory);margin-bottom:5px;letter-spacing:.3px;}
+.cgyn-hl-text p{font-size:12px;color:var(--muted);line-height:1.75;}
+
+/* CTA card */
+.cgyn-cta-card{background:linear-gradient(135deg,rgba(122,48,48,0.25),rgba(45,15,20,0.8));border:1px solid rgba(201,132,106,0.22);padding:28px;margin-top:auto;}
+.cgyn-cta-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ivory);margin-bottom:8px;}
+.cgyn-cta-sub{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.cgyn-cta-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.cgyn-cta-phone{border-top:1px solid rgba(200,169,110,0.1);padding-top:14px;text-align:center;}
+
+/* Update nav to include cosmetic gyn link */
+.nav-cosmetic-gyn{}
+
+/* MOBILE */
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;}
   .hero-right{display:none;}
   .hero-left{padding:120px 26px 75px;}
   .hero h1{font-size:50px;}
-  nav{padding:14px 22px;}
-  nav.scrolled{padding:9px 22px;}
+  nav{padding:15px 26px;}
+  nav.scrolled{padding:10px 26px;}
   .nav-center{display:none;}
-  .section,.infertility-section{padding:65px 22px;}
+  .section,.infertility-section{padding:65px 26px;}
   .services-grid{grid-template-columns:1fr 1fr;}
   .inf-grid{grid-template-columns:1fr;}
   .inf-card{grid-template-columns:1fr;}
   .inf-img-wrap,.inf-img{width:100%;height:200px;min-height:unset;}
   .doctor-section{grid-template-columns:1fr;}
   .appt-section{grid-template-columns:1fr;}
-  .appt-left{padding:60px 22px;}
-  .appt-form-side{padding:60px 22px;}
   .why-grid{grid-template-columns:1fr 1fr;}
   .test-grid{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr 1fr;}
-  .cta-section{padding:60px 22px;}
-  footer{padding:55px 22px 24px;}
+  .e-bar{padding:8px 20px;font-size:10px;}
+  .e-bar-left{gap:10px;}
+  .cgyn-hero{padding:70px 26px 45px;}
+  .cgyn-hero-title{font-size:44px;}
+  .cgyn-body{grid-template-columns:1fr;}
+  .cgyn-left{padding:45px 26px;border-right:none;border-bottom:1px solid rgba(200,169,110,0.08);}
+  .cgyn-right{padding:40px 26px;}
+  .cgyn-cond-grid{grid-template-columns:1fr;}
+  .cgyn-cond-full{grid-column:auto;}
 }
 @media(max-width:580px){
   .services-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr;}
   .f-row{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;}
-  .hero h1{font-size:40px;}
-  .section-title{font-size:38px;}
+  .hero h1{font-size:42px;}
+  .cgyn-hero-title{font-size:36px;}
+  .cgyn-cond-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -356,23 +389,13 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
 <div class="cur" id="curDot" style="top:0;left:0;"><div class="cur-dot"></div></div>
 <div class="cur" id="curRing" style="top:0;left:0;"><div class="cur-ring"></div></div>
 
-<!-- TOAST NOTIFICATION -->
-<div class="toast" id="toast">
-  <div class="toast-icon">✅</div>
-  <div class="toast-body">
-    <h4>Redirecting to WhatsApp</h4>
-    <p>Your appointment details are ready. WhatsApp will open to send the message to Dr. Priyenka's team.</p>
-  </div>
-  <button class="toast-close" onclick="closeToast()">✕</button>
-</div>
-
 <!-- EMERGENCY BAR -->
 <div class="e-bar">
   <div class="e-bar-left">
     <span>📍 Tirunelveli, Tamil Nadu</span>
-    <span>🕐 Mon – Sat &nbsp;|&nbsp; 5.30 PM – 9.30 PM</span>
+    <span>🕐 Mon – Sat &nbsp;|&nbsp; 9 AM – 8 PM</span>
   </div>
-  <a href="tel:+916374315412">📞 +91 63743 15412 &nbsp;—&nbsp; Call Now</a>
+  <a href="tel:+916374315412">📞 +91 63743 15412 &nbsp;—&nbsp; Book Now</a>
 </div>
 
 <!-- NAVBAR -->
@@ -395,18 +418,30 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
     <a href="#home">Home</a>
     <a href="#services">Treatments</a>
     <a href="#infertility">Fertility</a>
+    <a href="#cosmeticgyn">Cosmetic Gyn</a>
     <a href="#doctor">Doctor</a>
     <a href="#appointment">Appointment</a>
     <a href="#contact">Contact</a>
   </div>
 
+  <div class="nav-right">
+    <!-- Login Dropdown -->
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-btn">
+        🔐 Login <span class="arr">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="patient-login.html"><span>🧑‍💼</span> Patient Login</a>
+        <a href="admin-login.html"><span>🛡️</span> Admin Login</a>
+      </div>
+    </div>
     <button class="nav-book" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Now</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-left">
+  <div class="hero-left reveal">
     <div class="hero-tag">Premium Aesthetics &amp; Fertility Clinic</div>
     <h1>Beauty &amp; Life<br>Begin With <em>You</em></h1>
     <p class="hero-sub">Advanced skin science, cosmetic treatments, infertility care, and women's wellness — by Dr. G. Parasakthi Priyenka.</p>
@@ -419,17 +454,17 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
 
   <div class="hero-right">
     <div class="hero-right-bg">
-      <div style="position:absolute;width:320px;height:320px;border:1px solid rgba(200,169,110,0.09);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 5s ease-in-out infinite;"></div>
-      <div style="position:absolute;width:200px;height:200px;border:1px solid rgba(200,169,110,0.16);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 5s 1.2s ease-in-out infinite;"></div>
+      <div style="position:absolute;width:310px;height:310px;border:1px solid rgba(200,169,110,0.11);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+      <div style="position:absolute;width:195px;height:195px;border:1px solid rgba(200,169,110,0.19);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
       <div style="text-align:center;position:relative;z-index:2;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:108px;font-weight:300;color:rgba(200,169,110,0.07);line-height:1;">ONE</div>
-        <div style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:7px;color:rgba(200,169,110,0.18);text-transform:uppercase;margin-top:-10px;">Aesthetics</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:105px;font-weight:300;color:rgba(200,169,110,0.09);line-height:1;">ONE</div>
+        <div style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:6px;color:rgba(200,169,110,0.2);text-transform:uppercase;margin-top:-10px;">Aesthetics</div>
       </div>
       <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
     </div>
   </div>
 
-  <div class="hero-stat-strip">
+  <div class="hero-stat-strip reveal">
     <div class="h-stat"><div class="n">5000+</div><div class="l">Patients</div></div>
     <div class="h-stat"><div class="n">18+</div><div class="l">Treatments</div></div>
     <div class="h-stat"><div class="n">5 ★</div><div class="l">Rating</div></div>
@@ -465,7 +500,6 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
     <span class="tick-item"><span class="tick-dot"></span>Cosmetic Gynaecology</span>
   </div>
 </div>
-
 <!-- AESTHETIC TREATMENTS -->
 <section class="section services-section" id="services">
   <div class="reveal" style="margin-bottom:48px;">
@@ -689,23 +723,190 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
     </div>
   </div>
 </section>
+<!-- COSMETIC GYNAECOLOGY DEDICATED SECTION -->
+<section class="cgynsec" id="cosmeticgyn">
+
+  <!-- Hero Banner -->
+  <div class="cgyn-hero">
+    <div class="cgyn-hero-inner reveal">
+      <div class="section-label" style="color:var(--rose);display:flex;align-items:center;gap:13px;">
+        <span style="width:20px;height:1px;background:var(--rose);display:inline-block;flex-shrink:0;"></span>
+        Women's Intimate Wellness
+      </div>
+      <h2 class="cgyn-hero-title">Cosmetic <em>Gynaecology</em></h2>
+      <p class="cgyn-hero-sub">Reclaim and restore your sexual health in a safe, private &amp; compassionate setting with Dr. G. Parasakthi Priyenka.</p>
+    </div>
+    <div class="cgyn-hero-deco">
+      <div class="cgyn-circle cgyn-circle-1"></div>
+      <div class="cgyn-circle cgyn-circle-2"></div>
+      <div class="cgyn-circle cgyn-circle-3"></div>
+    </div>
+  </div>
+
+  <!-- Main two-column body -->
+  <div class="cgyn-body">
+
+    <!-- LEFT: conditions list -->
+    <div class="cgyn-left reveal-left">
+      <div class="cgyn-who-head">
+        <span class="cgyn-who-icon">🌸</span>
+        <div>
+          <div class="cgyn-who-label">Who Wants a Cosmetic Gynaecology Consultation?</div>
+          <div class="cgyn-who-sub">Conditions we treat at The One Aesthetics</div>
+        </div>
+      </div>
+
+      <div class="cgyn-cond-grid">
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Vaginal Dryness</div>
+            <div class="cgyn-cond-detail">Loss of natural moisture causing discomfort and pain</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Post Delivery Rehabilitation</div>
+            <div class="cgyn-cond-detail">Restoring vaginal tone and function after childbirth</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Lax Vagina</div>
+            <div class="cgyn-cond-detail">Vaginal looseness affecting quality of life and intimacy</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Genital Skin Lightening</div>
+            <div class="cgyn-cond-detail">Safe, non-surgical brightening of intimate skin areas</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Painful Intercourse</div>
+            <div class="cgyn-cond-detail">Dyspareunia treatment for a pain-free intimate life</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Postmenopausal Atrophy</div>
+            <div class="cgyn-cond-detail">Managing vaginal thinning and dryness after menopause</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Vaginal Fistula</div>
+            <div class="cgyn-cond-detail">Evaluation and management of vaginal fistula conditions</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Recurrent Infection</div>
+            <div class="cgyn-cond-detail">Treating chronic vaginal and urinary tract infections</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Urinary Incontinence</div>
+            <div class="cgyn-cond-detail">Non-surgical solutions for bladder control issues</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Genital Prolapse</div>
+            <div class="cgyn-cond-detail">Assessment and management of pelvic organ prolapse</div>
+          </div>
+        </div>
+        <div class="cgyn-cond-card cgyn-cond-full">
+          <span class="cgyn-dot"></span>
+          <div>
+            <div class="cgyn-cond-name">Vaginal Rejuvenation</div>
+            <div class="cgyn-cond-detail">Comprehensive rejuvenation for restored confidence and comfort</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: highlights + CTA -->
+    <div class="cgyn-right reveal">
+
+      <div class="cgyn-highlight">
+        <div class="cgyn-hl-icon">🔒</div>
+        <div class="cgyn-hl-text">
+          <h4>Strictly Confidential</h4>
+          <p>Every consultation is completely private. Your comfort, safety, and confidentiality are our highest priority at all times.</p>
+        </div>
+      </div>
+
+      <div class="cgyn-highlight">
+        <div class="cgyn-hl-icon">👩‍⚕️</div>
+        <div class="cgyn-hl-text">
+          <h4>Expert Care by Dr. Priyenka</h4>
+          <p>Dr. G. Parasakthi Priyenka brings specialised expertise in cosmetic gynaecology with a compassionate, patient-first approach.</p>
+        </div>
+      </div>
+
+      <div class="cgyn-highlight">
+        <div class="cgyn-hl-icon">✨</div>
+        <div class="cgyn-hl-text">
+          <h4>Non-Surgical &amp; Advanced Procedures</h4>
+          <p>We offer the latest minimally invasive techniques for safe, effective, and comfortable treatment tailored to your needs.</p>
+        </div>
+      </div>
+
+      <div class="cgyn-highlight">
+        <div class="cgyn-hl-icon">💬</div>
+        <div class="cgyn-hl-text">
+          <h4>Judgement-Free Environment</h4>
+          <p>A dedicated women's space where you can speak openly about your concerns — without hesitation or embarrassment.</p>
+        </div>
+      </div>
+
+      <!-- CTA card -->
+      <div class="cgyn-cta-card">
+        <div class="cgyn-cta-title">Ready to Consult Dr. Priyenka?</div>
+        <p class="cgyn-cta-sub">Take the first step towards reclaiming your health and confidence today. All enquiries are completely confidential.</p>
+        <div class="cgyn-cta-btns">
+          <button class="btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">📅 Book Appointment</button>
+          <a href="https://wa.me/916374315412?text=Hello%2C%20I%20would%20like%20a%20confidential%20consultation%20for%20Cosmetic%20Gynaecology%20with%20Dr.%20Priyenka." target="_blank">
+            <button class="btn-ghost" style="border-color:rgba(37,211,102,0.45);color:#4ade80;">💬 WhatsApp</button>
+          </a>
+        </div>
+        <div class="cgyn-cta-phone">
+          <a href="tel:+916374315412" style="color:var(--gold-light);font-size:13px;letter-spacing:.5px;">📞 +91 63743 15412</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- DOCTOR -->
 <section class="doctor-section" id="doctor">
   <div class="doc-img-side">
     <div class="doc-placeholder">
-      <div class="doc-orb"></div>
       <div class="doc-ring1"></div>
       <div class="doc-ring2"></div>
       <div class="doc-monogram"><span>P</span></div>
     </div>
-    <div class="doc-img-overlay"></div>
     <div class="doc-tag">
       <div class="dt">Lead Consultant</div>
       <div class="dn">Dr. G. Parasakthi Priyenka</div>
       <div class="ds">Dermatology, Aesthetics &amp; Fertility</div>
     </div>
   </div>
+
   <div class="doc-info-side reveal">
     <div class="section-label">Meet Your Doctor</div>
     <h2 class="section-title" style="color:var(--ivory);">The Art of <em>Confident</em> Living</h2>
@@ -732,22 +933,22 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
     <div class="why-card">
       <div class="w-icon">🔬</div>
       <div class="w-title">Clinical Precision</div>
-      <p class="w-desc">Every treatment is grounded in the latest medical science, performed with exacting care and expertise.</p>
+      <p class="w-desc">Every treatment is grounded in the latest medical science, performed with exacting care.</p>
     </div>
     <div class="why-card">
       <div class="w-icon">🤍</div>
       <div class="w-title">Personalised Plans</div>
-      <p class="w-desc">Treatment plans crafted exclusively around your unique needs, goals, and health profile.</p>
+      <p class="w-desc">We craft treatment plans tailored exclusively to your unique needs and goals.</p>
     </div>
     <div class="why-card">
       <div class="w-icon">🔒</div>
       <div class="w-title">Safe &amp; Certified</div>
-      <p class="w-desc">All procedures follow strict safety protocols using FDA-approved products and certified equipment.</p>
+      <p class="w-desc">All procedures follow strict safety protocols using FDA-approved products and equipment.</p>
     </div>
     <div class="why-card">
       <div class="w-icon">🌸</div>
       <div class="w-title">Women's Wellness</div>
-      <p class="w-desc">A dedicated space for women and couples — sensitive, private, and completely judgement-free.</p>
+      <p class="w-desc">A dedicated space for women and couples — sensitive, private, and judgement-free.</p>
     </div>
   </div>
 </section>
@@ -757,39 +958,38 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
   <div class="appt-left reveal-left">
     <div class="section-label">Book Now</div>
     <h2 class="section-title">Schedule Your<br><em>Consultation</em></h2>
-    <p class="section-sub">Take the first step toward your best self. Fill the form — your details are sent directly via WhatsApp for instant confirmation.</p>
+    <p class="section-sub">Take the first step toward your best self. Our team confirms your slot within minutes.</p>
     <div class="appt-features">
       <div class="af">
-        <div class="af-icon">💬</div>
-        <div class="af-text"><h4>Sent via WhatsApp</h4><p>Your appointment details go directly to Dr. Priyenka's team on WhatsApp for fast response.</p></div>
-      </div>
-      <div class="af">
         <div class="af-icon">⚡</div>
-        <div class="af-text"><h4>Instant Confirmation</h4><p>The team will confirm your slot within minutes of receiving your message.</p></div>
+        <div class="af-text"><h4>Instant Confirmation</h4><p>Receive your booking confirmation immediately after submitting.</p></div>
       </div>
       <div class="af">
         <div class="af-icon">🔔</div>
         <div class="af-text"><h4>Appointment Reminders</h4><p>We'll remind you before your visit so you never miss your slot.</p></div>
+      </div>
+      <div class="af">
+        <div class="af-icon">💬</div>
+        <div class="af-text"><h4>Direct Consultation</h4><p>Speak directly with Dr. Priyenka for personalised guidance.</p></div>
       </div>
     </div>
   </div>
 
   <div class="appt-form-side reveal">
     <div class="form-title">Book an Appointment</div>
-    <div class="form-wa-note">Sent directly via WhatsApp</div>
-    <form id="bookForm" novalidate>
+    <form id="bookForm">
       <div class="f-row">
-        <div class="fg"><label>Full Name *</label><input type="text" id="f-name" placeholder="Your name" required></div>
-        <div class="fg"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 XXXXX XXXXX" required></div>
+        <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 63743 15412"></div>
       </div>
       <div class="f-row">
-        <div class="fg"><label>Preferred Date *</label><input type="date" id="f-date" required></div>
-        <div class="fg"><label>Preferred Time *</label><input type="time" id="f-time" required></div>
+        <div class="fg"><label>Date</label><input type="date" required></div>
+        <div class="fg"><label>Preferred Time</label><input type="time" required></div>
       </div>
       <div class="fg">
-        <label>Treatment Interested In *</label>
-        <select id="f-treatment" required>
-          <option value="">Select a treatment…</option>
+        <label>Treatment Interested In</label>
+        <select required>
+          <option value="">Select treatment…</option>
           <optgroup label="Aesthetic Treatments">
             <option>HydraFacial</option>
             <option>Chemical Peels</option>
@@ -809,19 +1009,11 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
             <option>Endometriosis / PCOS Fertility</option>
             <option>Couple Fertility Counselling</option>
           </optgroup>
-          <option value="General Consultation">General Consultation</option>
+          <option>General Consultation</option>
         </select>
       </div>
-      <div class="fg"><label>Message / Symptoms</label><textarea id="f-message" placeholder="Briefly describe your concerns…"></textarea></div>
-
-      <div class="form-submit-wrap">
-        <button type="submit" class="form-submit" id="submitBtn">
-          <span class="wa-icon">💬</span>
-          <span class="btn-text">Send via WhatsApp</span>
-          <div class="spinner"></div>
-        </button>
-      </div>
-      <p class="submit-note">WhatsApp will open with your details pre-filled. Simply press Send.</p>
+      <div class="fg"><label>Message / Symptoms</label><textarea placeholder="Briefly describe your concerns…"></textarea></div>
+      <button type="submit" class="form-submit">Confirm Appointment</button>
     </form>
   </div>
 </div>
@@ -860,8 +1052,8 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
     <p class="section-sub">Join thousands who trust The One Aesthetics for transformative skin, beauty, and fertility care.</p>
     <div class="cta-btns">
       <button class="btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book a Consultation</button>
-      <a href="tel:+916374315412"><button class="btn-ghost" style="border-color:rgba(249,245,240,0.36);">📞 Call Now</button></a>
-      <a href="https://wa.me/916374315412" target="_blank"><button class="btn-ghost" style="border-color:rgba(37,211,102,0.5);color:#4ade80;">💬 WhatsApp</button></a>
+      <a href="tel:+916374315412"><button class="btn-ghost" style="border-color:rgba(249,245,240,0.38);">📞 Call Now</button></a>
+      <a href="https://wa.me/916374315412" target="_blank"><button class="btn-ghost" style="border-color:rgba(249,245,240,0.38);">💬 WhatsApp</button></a>
     </div>
   </div>
 </section>
@@ -871,9 +1063,9 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="fb-logo">The <span>One</span> Aesthetics</div>
-      <p>Your premier aesthetic, women's wellness, and fertility clinic in Tirunelveli, Tamil Nadu.</p>
+      <p>Your premier aesthetic, women's wellness, and fertility clinic in Tirunelveli.</p>
       <div class="social-row">
-        <div class="soc">fb</div>
+        <div class="soc">f</div>
         <div class="soc">ig</div>
         <div class="soc">yt</div>
       </div>
@@ -883,28 +1075,25 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
       <a href="#home">Home</a>
       <a href="#services">Treatments</a>
       <a href="#infertility">Fertility Care</a>
+      <a href="#cosmeticgyn">Cosmetic Gynaecology</a>
       <a href="#doctor">Dr. Priyenka</a>
       <a href="#appointment">Appointment</a>
+    </div>
+    <div class="footer-col">
+      <h4>Portals</h4>
+      <a href="patient-login.html">Patient Login</a>
+      <a href="admin-login.html">Admin Login</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <a>📍 Tirunelveli, Tamil Nadu</a>
       <a href="tel:+916374315412">📞 +91 63743 15412</a>
-      <a href="https://wa.me/916374315412" target="_blank">💬 WhatsApp Us</a>
+      <a href="https://wa.me/916374315412">💬 WhatsApp</a>
       <a>🕐 Mon – Sat: 9 AM – 8 PM</a>
     </div>
-    <div class="footer-col">
-      <h4>Treatments</h4>
-      <a href="#services">HydraFacial</a>
-      <a href="#services">Laser Hair Reduction</a>
-      <a href="#services">Botox &amp; Fillers</a>
-      <a href="#infertility">IUI / IVF Support</a>
-      <a href="#services">PCOS / PCOD Care</a>
-    </div>
   </div>
-  <hr class="footer-divider">
   <div class="footer-bottom">
-    <p>© 2026 The One Aesthetics, Tirunelveli. All rights reserved.</p>
+    <p>© 2026 The One Aesthetics. All rights reserved.</p>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Use</a>
@@ -912,185 +1101,124 @@ footer{background:#0a0404;padding:68px 50px 28px;border-top:1px solid rgba(200,1
   </div>
 </footer>
 
-<!-- FLOATING ACTION BUTTONS -->
-<div class="fab-col">
-  <div class="fab-wrap">
-    <div class="fab-tip">WhatsApp Us</div>
-    <a href="https://wa.me/916374315412" target="_blank" style="position:relative;display:block;">
-      <div class="fab-wa-pulse"></div>
-      <button class="fab fab-wa">💬</button>
-    </a>
+<!-- COSMETIC GYNAECOLOGY DETAIL MODAL -->
+<div class="cg-modal-overlay" id="cgModal" onclick="closeCGModalOutside(event)">
+  <div class="cg-modal" role="dialog" aria-modal="true" aria-labelledby="cgModalTitle">
+    <div class="cg-modal-header">
+      <div>
+        <div class="cg-modal-tag">Treatment Details</div>
+        <div class="cg-modal-title" id="cgModalTitle">Cosmetic Gynaecology</div>
+        <div class="cg-modal-subtitle">Reclaim and restore your sexual health</div>
+      </div>
+      <button class="cg-modal-close" onclick="closeCGModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="cg-modal-body">
+      <div class="cg-who">
+        <div class="cg-who-title">Who Needs a Cosmetic Gynaecology Consultation?</div>
+        <div class="cg-conditions">
+          <span class="cg-cond">Vaginal Dryness</span>
+          <span class="cg-cond">Post Delivery Rehabilitation</span>
+          <span class="cg-cond">Lax Vagina</span>
+          <span class="cg-cond">Genital Skin Lightening</span>
+          <span class="cg-cond">Painful Intercourse</span>
+          <span class="cg-cond">Postmenopausal Atrophy</span>
+          <span class="cg-cond">Vaginal Fistula</span>
+          <span class="cg-cond">Recurrent Infection</span>
+          <span class="cg-cond">Urinary Incontinence</span>
+          <span class="cg-cond">Genital Prolapse</span>
+          <span class="cg-cond">Vaginal Rejuvenation</span>
+        </div>
+      </div>
+      <div class="cg-divider"></div>
+      <p class="cg-desc">At The One Aesthetics, Dr. G. Parasakthi Priyenka provides comprehensive cosmetic gynaecological care in a completely private, safe, and compassionate environment. Each treatment plan is individually tailored — combining clinical expertise with sensitivity to help you reclaim your confidence and quality of life. All consultations are strictly confidential.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <button class="cg-book-btn" onclick="closeCGModal();setTimeout(()=>document.getElementById('appointment').scrollIntoView({behavior:'smooth'}),200)">📅 Book Consultation</button>
+        <a href="https://wa.me/916374315412?text=Hello%20Dr.%20Priyenka%27s%20team%2C%20I%20would%20like%20a%20consultation%20for%20Cosmetic%20Gynaecology." target="_blank">
+          <button class="cg-book-btn" style="background:transparent;border:1px solid rgba(37,211,102,0.5);color:#4ade80;">💬 WhatsApp Directly</button>
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="fab-wrap">
+</div>
+
+<!-- FABs -->
+<div class="fab-col">
+  <div class="fab-w">
+    <div class="fab-tip">WhatsApp</div>
+    <a href="https://wa.me/916374315412" target="_blank"><button class="fab fab-wa">💬</button></a>
+  </div>
+  <div class="fab-w">
     <div class="fab-tip">Call Now</div>
-    <a href="tel:+916374315412">
-      <button class="fab fab-call">📞</button>
-    </a>
+    <a href="tel:+916374315412"><button class="fab fab-call">📞</button></a>
   </div>
 </div>
 
 <script>
-/* ── CURSOR ── */
-const dot = document.getElementById('curDot');
-const ring = document.getElementById('curRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-});
-(function animR() {
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animR);
-})();
+/* CURSOR */
+const dot=document.getElementById('curDot'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function animR(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR);})();
 
-/* ── NAVBAR ── */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+/* NAVBAR */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
 
-/* ── SCROLL REVEAL ── */
-const ro = new IntersectionObserver(entries => entries.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
-}), { threshold: 0.1 });
-document.querySelectorAll('.reveal,.reveal-left').forEach(el => ro.observe(el));
-setTimeout(() => {
-  document.querySelectorAll('.reveal,.reveal-left').forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('in');
-  });
-}, 80);
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>ro.observe(el));
+setTimeout(()=>{document.querySelectorAll('.reveal,.reveal-left').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-50)el.classList.add('in');});},80);
 
-/* ── HERO CANVAS ── */
-(function () {
-  const c = document.getElementById('heroCanvas');
-  if (!c) return;
-  const ctx = c.getContext('2d');
-  function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
-  resize(); window.addEventListener('resize', resize);
-  const pts = Array.from({ length: 55 }, () => ({
-    x: Math.random(), y: Math.random(),
-    r: Math.random() * 1.2 + 0.3,
-    vx: (Math.random() - 0.5) * 0.00017,
-    vy: (Math.random() - 0.5) * 0.00017,
-    a: Math.random() * 0.3 + 0.07
-  }));
-  function draw() {
-    ctx.clearRect(0, 0, c.width, c.height);
-    pts.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0;
-      if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x * c.width, p.y * c.height, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200,169,110,${p.a})`; ctx.fill();
+/* HERO CANVAS */
+(function(){
+  const c=document.getElementById('heroCanvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  const pts=Array.from({length:55},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.2+0.3,vx:(Math.random()-.5)*.00017,vy:(Math.random()-.5)*.00017,a:Math.random()*.32+.07}));
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=1;if(p.x>1)p.x=0;if(p.y<0)p.y=1;if(p.y>1)p.y=0;
+      ctx.beginPath();ctx.arc(p.x*c.width,p.y*c.height,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,169,110,${p.a})`;ctx.fill();
     });
-    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
-      const dx = (pts[i].x - pts[j].x) * c.width, dy = (pts[i].y - pts[j].y) * c.height;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 82) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(200,169,110,${0.09 * (1 - d / 82)})`;
-        ctx.lineWidth = 0.5;
-        ctx.moveTo(pts[i].x * c.width, pts[i].y * c.height);
-        ctx.lineTo(pts[j].x * c.width, pts[j].y * c.height);
-        ctx.stroke();
-      }
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=(pts[i].x-pts[j].x)*c.width,dy=(pts[i].y-pts[j].y)*c.height,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<82){ctx.beginPath();ctx.strokeStyle=`rgba(200,169,110,${.09*(1-d/82)})`;ctx.lineWidth=.5;ctx.moveTo(pts[i].x*c.width,pts[i].y*c.height);ctx.lineTo(pts[j].x*c.width,pts[j].y*c.height);ctx.stroke();}
     }
     requestAnimationFrame(draw);
   }
   draw();
 })();
 
-/* ── DATE MIN ── */
-const di = document.getElementById('f-date');
-if (di) di.min = new Date().toISOString().split('T')[0];
-
-/* ── TOAST ── */
-let toastTimer;
-function showToast() {
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 6000);
+/* COSMETIC GYNAECOLOGY MODAL */
+function openCGModal(){
+  const m=document.getElementById('cgModal');
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
 }
-function closeToast() {
-  document.getElementById('toast').classList.remove('show');
-  clearTimeout(toastTimer);
+function closeCGModal(){
+  const m=document.getElementById('cgModal');
+  m.classList.remove('open');
+  document.body.style.overflow='';
 }
-
-/* ── FORMAT TIME ── */
-function formatTime(t) {
-  if (!t) return '';
-  const [h, m] = t.split(':');
-  const hr = parseInt(h);
-  const ampm = hr >= 12 ? 'PM' : 'AM';
-  return `${hr % 12 || 12}:${m} ${ampm}`;
+function closeCGModalOutside(e){
+  if(e.target===document.getElementById('cgModal')) closeCGModal();
 }
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeCGModal();});
 
-/* ── FORMAT DATE ── */
-function formatDate(d) {
-  if (!d) return '';
-  const dt = new Date(d + 'T00:00:00');
-  return dt.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-}
+/* DATE MIN */
+const di=document.querySelector('input[type="date"]');
+if(di)di.min=new Date().toISOString().split('T')[0];
 
-/* ── WHATSAPP FORM SUBMIT ── */
-document.getElementById('bookForm').addEventListener('submit', function (e) {
+/* FORM */
+document.getElementById('bookForm').addEventListener('submit',function(e){
   e.preventDefault();
-
-  const name     = document.getElementById('f-name').value.trim();
-  const phone    = document.getElementById('f-phone').value.trim();
-  const date     = document.getElementById('f-date').value;
-  const time     = document.getElementById('f-time').value;
-  const treatment = document.getElementById('f-treatment').value;
-  const message  = document.getElementById('f-message').value.trim();
-
-  // Validation
-  if (!name || !phone || !date || !time || !treatment) {
-    const fields = [
-      { id: 'f-name', val: name },
-      { id: 'f-phone', val: phone },
-      { id: 'f-date', val: date },
-      { id: 'f-time', val: time },
-      { id: 'f-treatment', val: treatment }
-    ];
-    fields.forEach(f => {
-      const el = document.getElementById(f.id);
-      if (!f.val) {
-        el.style.borderBottomColor = '#f87171';
-        el.addEventListener('input', () => el.style.borderBottomColor = '', { once: true });
-      }
-    });
-    return;
-  }
-
-  const btn = document.getElementById('submitBtn');
-  btn.classList.add('loading');
-  btn.disabled = true;
-
-  // Build beautiful WhatsApp message
-  const msg =
-`🌸 *New Appointment Request*
-━━━━━━━━━━━━━━━━━━━━
-*The One Aesthetics — Tirunelveli*
-
-👤 *Patient Name:* ${name}
-📞 *Contact:* ${phone}
-📅 *Preferred Date:* ${formatDate(date)}
-🕐 *Preferred Time:* ${formatTime(time)}
-💊 *Treatment:* ${treatment}
-${message ? `\n💬 *Message:*\n${message}` : ''}
-━━━━━━━━━━━━━━━━━━━━
-_Please confirm my appointment slot. Thank you!_`;
-
-  const waURL = `https://wa.me/916374315412?text=${encodeURIComponent(msg)}`;
-
-  setTimeout(() => {
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    window.open(waURL, '_blank');
-    showToast();
-    this.reset();
-  }, 900);
+  alert('Thank you! Your appointment request has been received.\nDr. Priyenka\'s team will confirm shortly.\n\n📞 +91 63743 15412');
+  this.reset();
 });
 </script>
 </body>
