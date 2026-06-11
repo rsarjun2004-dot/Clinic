@@ -977,44 +977,110 @@ footer{background:#0f0606;padding:65px 50px 26px;border-top:1px solid rgba(200,1
 
   <div class="appt-form-side reveal">
     <div class="form-title">Book an Appointment</div>
-    <form id="bookForm">
-      <div class="f-row">
-        <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
-        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 63743 15412"></div>
-      </div>
-      <div class="f-row">
-        <div class="fg"><label>Date</label><input type="date" required></div>
-        <div class="fg"><label>Preferred Time</label><input type="time" required></div>
-      </div>
-      <div class="fg">
+   ```html
+<form id="bookForm">
+    
+    <div class="f-row">
+        <div class="fg">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+        </div>
+
+        <div class="fg">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 63743 15412" required>
+        </div>
+    </div>
+
+    <div class="f-row">
+        <div class="fg">
+            <label>Date</label>
+            <input type="date" id="date" required>
+        </div>
+
+        <div class="fg">
+            <label>Preferred Time</label>
+            <input type="time" id="time" required>
+        </div>
+    </div>
+
+    <div class="fg">
         <label>Treatment Interested In</label>
-        <select required>
-          <option value="">Select treatment…</option>
-          <optgroup label="Aesthetic Treatments">
-            <option>HydraFacial</option>
-            <option>Chemical Peels</option>
-            <option>Botox &amp; Fillers</option>
-            <option>Laser Hair Reduction</option>
-            <option>PRP / GFC Therapy</option>
-            <option>Microneedling</option>
-            <option>Pregnancy Care</option>
-            <option>PCOS / PCOD</option>
-            <option>Cosmetic Gynaecology</option>
-          </optgroup>
-          <optgroup label="Fertility Treatments">
-            <option>Female Fertility Evaluation</option>
-            <option>Male Infertility / Semen Analysis</option>
-            <option>IUI Support</option>
-            <option>IVF Support</option>
-            <option>Endometriosis / PCOS Fertility</option>
-            <option>Couple Fertility Counselling</option>
-          </optgroup>
-          <option>General Consultation</option>
+        <select id="treatment" required>
+            <option value="">Select treatment…</option>
+
+            <optgroup label="Aesthetic Treatments">
+                <option>HydraFacial</option>
+                <option>Chemical Peels</option>
+                <option>Botox & Fillers</option>
+                <option>Laser Hair Reduction</option>
+                <option>PRP / GFC Therapy</option>
+                <option>Microneedling</option>
+                <option>Pregnancy Care</option>
+                <option>PCOS / PCOD</option>
+                <option>Cosmetic Gynaecology</option>
+            </optgroup>
+
+            <optgroup label="Fertility Treatments">
+                <option>Female Fertility Evaluation</option>
+                <option>Male Infertility / Semen Analysis</option>
+                <option>IUI Support</option>
+                <option>IVF Support</option>
+                <option>Endometriosis / PCOS Fertility</option>
+                <option>Couple Fertility Counselling</option>
+            </optgroup>
+
+            <option>General Consultation</option>
         </select>
-      </div>
-      <div class="fg"><label>Message / Symptoms</label><textarea placeholder="Briefly describe your concerns…"></textarea></div>
-      <button type="submit" class="form-submit">Confirm Appointment</button>
-    </form>
+    </div>
+
+    <div class="fg">
+        <label>Message / Symptoms</label>
+        <textarea id="message" placeholder="Briefly describe your concerns…"></textarea>
+    </div>
+
+    <button type="submit" class="form-submit">
+        Confirm Appointment
+    </button>
+
+</form>
+
+<script>
+document.getElementById("bookForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const treatment = document.getElementById("treatment").value;
+    const symptoms = document.getElementById("message").value;
+
+    const whatsappMessage =
+`🌸 NEW APPOINTMENT BOOKING 🌸
+
+👤 Full Name: ${name}
+📞 Phone Number: ${phone}
+
+📅 Appointment Date: ${date}
+⏰ Preferred Time: ${time}
+
+💉 Treatment:
+${treatment}
+
+📝 Symptoms / Message:
+${symptoms}`;
+
+    const whatsappNumber = "916374315412";
+
+    const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+});
+</script>
+```
+
   </div>
 </div>
 
